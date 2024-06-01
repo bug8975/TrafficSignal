@@ -1,4 +1,5 @@
-﻿using SuperSocket.SocketBase;
+﻿using log4net;
+using SuperSocket.SocketBase;
 using SuperSocket.SocketBase.Config;
 using SuperSocket.SocketBase.Protocol;
 using System;
@@ -15,6 +16,7 @@ namespace TrafficSignal.Server
 {
     public class SupersocketManager
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(SupersocketManager));
         private List<CustomAppServer> _servers;
         private List<ServerConfig> _serverConfigs;
         private Dictionary<string, bool> _serverStates;
@@ -40,6 +42,7 @@ namespace TrafficSignal.Server
         {
             if (devices == null || devices.Count == 0)
             {
+                log.Error("The devices list cannot be null or empty.");
                 throw new ArgumentException("The devices list cannot be null or empty.");
             }
 
@@ -52,6 +55,7 @@ namespace TrafficSignal.Server
                     if (_usedPorts.Contains(device.Port))
                     {
                         Console.WriteLine($"Port {device.Port} is already in use. Skipping creation of server {device.DeviceName}.");
+                        log.Warn($"Port {device.Port} is already in use. Skipping creation of server {device.DeviceName}.");
                         continue;
                     }
 
@@ -67,6 +71,7 @@ namespace TrafficSignal.Server
                     var server = new CustomAppServer(device, _dbContext);
                     if (!server.Setup(config))
                     {
+                        log.Error($"Failed to set up server {config.Name}");
                         throw new Exception($"Failed to set up server {config.Name}");
                     }
 
@@ -76,10 +81,12 @@ namespace TrafficSignal.Server
                     _usedPorts.Add(device.Port);
 
                     Console.WriteLine($"Server {config.Name} created successfully on port {device.Port}.");
+                    log.Info($"Server {config.Name} created successfully on port {device.Port}.");
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Error creating server for device {device.DeviceName}: {ex.Message}");
+                    log.Error($"Error creating server for device {device.DeviceName}: {ex.Message}");
                 }
             }
         }
@@ -94,6 +101,7 @@ namespace TrafficSignal.Server
 
                 if (string.IsNullOrEmpty(portStr) || !int.TryParse(portStr, out port) || port <= 0 || port > 65535)
                 {
+                    log.Error("Invalid or missing 'ServerPort' configuration.");
                     throw new ConfigurationErrorsException("Invalid or missing 'ServerPort' configuration.");
                 }
 
@@ -109,24 +117,29 @@ namespace TrafficSignal.Server
                 _fixedPortServer = new DeviceAppServer(config);
                 if (!_fixedPortServer.Setup(config))
                 {
+                    log.Error("Failed to set up FixedPortServer");
                     throw new Exception("Failed to set up FixedPortServer");
                 }
 
                 if (!_fixedPortServer.Start())
                 {
+                    log.Error("Failed to start FixedPortServer");
                     throw new Exception("Failed to start FixedPortServer");
                 }
 
                 _fixedPortServer.NewRequestReceived += new RequestHandler<AppSession, StringRequestInfo>(HandleFixedPortRequest);
 
                 Console.WriteLine($"FixedPortServer created and started successfully on port {port}.");
+                log.Info($"FixedPortServer created and started successfully on port {port}.");
             }
             catch (ConfigurationErrorsException ex)
             {
+                log.Error($"Configuration error: {ex.Message}");
                 Console.WriteLine($"Configuration error: {ex.Message}");
             }
             catch (Exception ex)
             {
+                log.Error($"Error creating FixedPortServer: {ex.Message}");
                 Console.WriteLine($"Error creating FixedPortServer: {ex.Message}");
             }
         }
@@ -155,14 +168,17 @@ namespace TrafficSignal.Server
                     {
                         _serverStates[server.Config.Name] = true;
                         Console.WriteLine($"Server {server.Config.Name} started successfully.");
+                        log.Info($"Server {server.Config.Name} started successfully.");
                     }
                     else
                     {
+                        log.Error($"Failed to start server {server.Config.Name}");
                         throw new Exception($"Failed to start server {server.Config.Name}");
                     }
                 }
                 catch (Exception ex)
                 {
+                    log.Error($"Error starting server {server.Config.Name}: {ex.Message}");
                     Console.WriteLine($"Error starting server {server.Config.Name}: {ex.Message}");
                 }
             });
@@ -191,9 +207,11 @@ namespace TrafficSignal.Server
                     server.Stop();
                     _serverStates[server.Config.Name] = false;
                     Console.WriteLine($"Server {server.Config.Name} stopped successfully.");
+                    log.Info($"Server {server.Config.Name} stopped successfully.");
                 }
                 catch (Exception ex)
                 {
+                    log.Error($"Error stopping server {server.Config.Name}: {ex.Message}");
                     Console.WriteLine($"Error stopping server {server.Config.Name}: {ex.Message}");
                 }
             });
@@ -271,6 +289,7 @@ namespace TrafficSignal.Server
             }
             catch (Exception ex)
             {
+                log.Error($"Error sending message to client: {ex.Message}");
                 Console.WriteLine($"Error sending message to client: {ex.Message}");
                 return $"消息发送失败: {ex.Message}";
             }
@@ -348,6 +367,7 @@ namespace TrafficSignal.Server
             }
             catch (Exception ex)
             {
+                log.Error($"Error handling fixed port request: {ex.Message}");
                 Console.WriteLine($"Error handling fixed port request: {ex.Message}");
                 session.Send($"Error: {ex.Message}");
             }

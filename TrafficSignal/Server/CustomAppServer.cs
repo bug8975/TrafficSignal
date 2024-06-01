@@ -1,4 +1,5 @@
-﻿using SuperSocket.SocketBase;
+﻿using log4net;
+using SuperSocket.SocketBase;
 using System;
 using TrafficSignal.Models;
 
@@ -6,6 +7,7 @@ namespace TrafficSignal.Server
 {
     public class CustomAppServer : AppServer
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(CustomAppServer));
         private Device _device;
         private MySqlContext _dbContext;
 
@@ -35,10 +37,12 @@ namespace TrafficSignal.Server
                 device.CollectionState = state;
                 _dbContext.SaveChanges();
                 Console.WriteLine($"Device {device.DeviceName} state updated to {state}.");
+                log.Info($"Device {device.DeviceName} state updated to {state}.");
             }
             else
             {
                 Console.WriteLine($"Device with ID {deviceId} not found.");
+                log.Warn($"Device with ID {deviceId} not found.");
             }
         }
 

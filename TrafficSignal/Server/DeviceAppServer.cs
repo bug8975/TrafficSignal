@@ -1,4 +1,5 @@
-﻿using SuperSocket.SocketBase;
+﻿using log4net;
+using SuperSocket.SocketBase;
 using SuperSocket.SocketBase.Config;
 using System;
 
@@ -6,6 +7,7 @@ namespace TrafficSignal.Server
 {
     public class DeviceAppServer : AppServer
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(DeviceAppServer));
         private ServerConfig _serverConfig;
 
         public DeviceAppServer(ServerConfig serverConfig)
@@ -28,6 +30,7 @@ namespace TrafficSignal.Server
         private void UpdateDeviceState(string state)
         {
             Console.WriteLine($"Device {_serverConfig.Name} state updated to {state}.");
+            log.Warn($"Device {_serverConfig.Name} state updated to {state}.");
         }
     }
 }

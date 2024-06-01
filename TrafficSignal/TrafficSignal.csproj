@@ -282,8 +282,12 @@
     <EmbeddedResource Include="Views\MySqlContextView.resx">
       <DependentUpon>MySqlContextView.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Config\log4net.config" />
-    <None Include="Config\log4net.unix.config" />
+    <None Include="Config\log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Config\log4net.unix.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

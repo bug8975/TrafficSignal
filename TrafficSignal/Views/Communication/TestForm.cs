@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -11,6 +12,7 @@ namespace TrafficSignal.Views.Communication
 {
     public partial class TestForm : DevExpress.XtraEditors.XtraForm
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(TestForm));
         public TestForm()
         {
             InitializeComponent();
@@ -49,15 +51,18 @@ namespace TrafficSignal.Views.Communication
             {
                 if (Manager == null || device == null)
                 {
+                    log.Error("Manager或Device未初始化，请先进行初始化。");
                     XtraMessageBox.Show("Manager或Device未初始化，请先进行初始化。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
                 var status = Manager.GetServerStatus(device);
+                log.Info(status);
                 XtraMessageBox.Show(status);
             }
             catch (Exception ex)
             {
+                log.Error($"测试网络时发生错误: {ex.Message}");
                 XtraMessageBox.Show($"测试网络时发生错误: {ex.Message}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -68,6 +73,7 @@ namespace TrafficSignal.Views.Communication
             {
                 if (Manager == null || device == null)
                 {
+                    log.Error("Manager或Device未初始化，请先进行初始化。");
                     XtraMessageBox.Show("Manager或Device未初始化，请先进行初始化。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
@@ -80,10 +86,12 @@ namespace TrafficSignal.Views.Communication
                 }
 
                 var result = Manager.SendMessageToClient(device, selectedValue);
+                log.Info(result);
                 XtraMessageBox.Show(result);
             }
             catch (Exception ex)
             {
+                log.Error($"发送消息时发生错误: {ex.Message}");
                 XtraMessageBox.Show($"发送消息时发生错误: {ex.Message}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -94,6 +102,7 @@ namespace TrafficSignal.Views.Communication
             {
                 if (device == null)
                 {
+                    log.Error("Manager或Device未初始化，请先进行初始化。");
                     XtraMessageBox.Show("Device未初始化，请先进行初始化。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
@@ -117,6 +126,7 @@ namespace TrafficSignal.Views.Communication
             }
             catch (Exception ex)
             {
+                log.Error($"加载表单时发生错误: {ex.Message}");
                 XtraMessageBox.Show($"加载表单时发生错误: {ex.Message}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

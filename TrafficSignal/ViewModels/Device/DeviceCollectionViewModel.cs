@@ -2,6 +2,7 @@
 using DevExpress.Mvvm.DataModel;
 using DevExpress.Mvvm.POCO;
 using DevExpress.Utils.Extensions;
+using log4net;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace TrafficSignal.ViewModels
     /// </summary>
     public partial class DeviceCollectionViewModel : CollectionViewModel<Device, int, IMySqlContextUnitOfWork>
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(DeviceCollectionViewModel));
         private SupersocketManager Manager { get; set; }
         private IMessageBoxService BoxService { get; set; }
         private MySqlContext _dbContext;
@@ -54,6 +56,7 @@ namespace TrafficSignal.ViewModels
             }
             catch (Exception ex)
             {
+                log.Error(ex.Message);
                 Console.WriteLine(ex.Message);
             }
         }
@@ -70,6 +73,7 @@ namespace TrafficSignal.ViewModels
             }
             catch (Exception ex)
             {
+                log.Error(ex.Message);
                 this.GetService<IMessageBoxService>().ShowMessage(ex.Message);
             }
             base.Refresh();
@@ -91,6 +95,7 @@ namespace TrafficSignal.ViewModels
             }
             catch (Exception ex)
             {
+                log.Error($"An error occurred: {ex.Message}");
                 Console.WriteLine($"An error occurred: {ex.Message}");
                 BoxService.ShowMessage($"An error occurred: {ex.Message}");
             }
@@ -107,6 +112,7 @@ namespace TrafficSignal.ViewModels
             }
             catch (Exception ex)
             {
+                log.Error($"An error occurred while stopping the servers: {ex.Message}");
                 Console.WriteLine($"An error occurred while stopping the servers: {ex.Message}");
                 BoxService.ShowMessage($"An error occurred while stopping the servers: {ex.Message}");
             }
@@ -132,6 +138,7 @@ namespace TrafficSignal.ViewModels
             else
             {
                 Console.WriteLine($"Device with ID {deviceId} not found.");
+                log.Warn($"Device with ID {deviceId} not found.");
             }
         }
 
