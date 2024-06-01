@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using TrafficSignal.Models;
 
 namespace TrafficSignal.Server.Enums
@@ -13,12 +10,12 @@ namespace TrafficSignal.Server.Enums
     {
         public static readonly Dictionary<ScreenCommandEnum, string> ScreenBigCommandHexValues = new Dictionary<ScreenCommandEnum, string>
         {
-            { ScreenCommandEnum.NormalPassageGreen, "a5 00 68 32 01 7b 01 14 00 00 00 12 00 00 05 00 00 03 05 00 ff 00 d5 fd b3 a3 cd a8 d0 d0 00 86 08 ae" },
-            { ScreenCommandEnum.WaterAheadCarriageReturnSlowPassageYellow, "a5 00 68 32 01 7b 01 1e 00 00 00 12 00 00 05 00 00 03 05 ff ff 00 c7 b0 b7 bd bb fd cb aa 0e 0d 0a bb ba c2 fd cd a8 d0 d0 00 ce 0f ae" },
-            { ScreenCommandEnum.WaterAheadCarriageReturnNoPassageRed, "a5 00 68 32 01 7b 01 1e 00 00 00 12 00 00 05 00 00 03 05 ff 00 00 c7 b0 b7 bd bb fd cb aa 0e 0d 0a bd fb d6 b9 cd a8 d0 d0 00 e2 0e ae" },
+            { ScreenCommandEnum.NormalPassageGreen, "a5 68 32 ff 7b 01 14 00 00 00 12 00 00 05 00 00 03 07 00 ff 00 d5 fd b3 a3 cd a8 d0 d0 00 86 09 ae" },
+            { ScreenCommandEnum.WaterAheadCarriageReturnSlowPassageYellow, "a5 68 32 ff 7b 01 1e 00 00 00 12 00 00 f5 00 00 03 07 ff ff 00 c7 b0 b7 bd bb fd cb aa 0e 0d 0a bb ba c2 fd cd a8 d0 d0 00 be 11 ae " },
+            { ScreenCommandEnum.WaterAheadCarriageReturnNoPassageRed, "a5 68 32 ff 7b 01 1e 00 00 00 12 00 00 f5 00 00 03 07 ff 00 00 c7 b0 b7 bd bb fd cb aa 0e 0d 0a bd fb d6 b9 cd a8 d0 d0 00 d2 10 ae" },
             { ScreenCommandEnum.WaterAheadSlowPassageYellow, "a5 00 68 32 01 7b 01 1d 00 00 00 12 00 00 05 00 00 03 05 ff ff 00 c7 b0 b7 bd bb fd cb aa 0e 20 bb ba c2 fd cd a8 d0 d0 00 d6 0f ae" },
             { ScreenCommandEnum.WaterAheadNoPassageRed, "a5 00 68 32 01 7b 01 1d 00 00 00 12 00 00 05 00 00 03 05 ff 00 00 c7 b0 b7 bd bb fd cb aa 0e 20 bd fb d6 b9 cd a8 d0 d0 00 ea 0e ae" },
-            { ScreenCommandEnum.SaveCommand, "A5 00 68 32 01 7B 01 04 00 00 00 07 00 00 00 22 01 ae" }
+            { ScreenCommandEnum.SaveCommand, "A5 68 32 01 7B 01 04 00 00 00 07 00 00 00 22 01 ae" }
         };
 
         public static readonly Dictionary<ScreenCommandEnum, string> ScreenSmallCommandHexValues = new Dictionary<ScreenCommandEnum, string>
@@ -26,6 +23,7 @@ namespace TrafficSignal.Server.Enums
             { ScreenCommandEnum.NormalPassageGreen, "a5 00 68 32 01 7b 01 26 00 00 00 12 00 00 05 00 00 03 03 ff ff 00 c7 b0 20 bb ba 0d 0a b7 bd 20 c2 fd 0d 0a bb fd 20 cd a8 0d 0a cb aa 0e 20 d0 d0 00 82 10 ae" },
             { ScreenCommandEnum.WaterAheadCarriageReturnSlowPassageYellow, "a5 68 32 01 7b 01 26 00 00 00 12 00 00 05 00 00 03 03 ff ff 00 c7 b0 20 bb ba 0d 0a b7 bd 20 c2 fd 0d 0a bb fd 20 cd a8 0d 0a cb aa 0e 20 d0 d0 00 7e 10 ae" },
             { ScreenCommandEnum.WaterAheadCarriageReturnNoPassageRed, "a5 00 68 32 01 7b 01 26 00 00 00 12 00 00 05 00 00 03 03 ff 00 00 c7 b0 20 bd fb 0d 0a b7 bd 20 d6 b9 0d 0a bb fd 20 cd a8 0d 0a cb aa 0e 20 d0 d0 00 96 0f ae" },
+            { ScreenCommandEnum.SaveCommand, "A5 68 32 01 7B 01 04 00 00 00 07 00 00 00 22 01 ae" }
         };
 
         public static readonly Dictionary<SignalCommandEnum, string> SignalUpCommandHexValues = new Dictionary<SignalCommandEnum, string>
@@ -98,7 +96,7 @@ namespace TrafficSignal.Server.Enums
 
             switch (device.DeviceType)
             {
-                case "显示屏":
+                case "显示器":
                     switch (device.DeviceVersion)
                     {
                         case "大屏（横屏）":

@@ -28,50 +28,50 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions7 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions8 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions9 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions10 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions11 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions12 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions2 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions3 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions4 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions5 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions6 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
-            this.DeviceNameTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.deviceViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.PortTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.DeviceTypeTextEdit = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.CollectionStateTextEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.DeviceNameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.ItemForDeviceName = new DevExpress.XtraLayout.LayoutControlItem();
+            this.PortTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.ItemForPort = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForDeviceType = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForDeviceVersion = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForDeviceGroup = new DevExpress.XtraLayout.LayoutControlItem();
+            this.CollectionStateTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.ItemForCollectionState = new DevExpress.XtraLayout.LayoutControlItem();
             this.windowsUIButtonPanelCloseButton = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
             this.windowsUIButtonPanelMain = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
             this.labelControl = new DevExpress.XtraEditors.LabelControl();
+            this.DeviceGroupTextEdit = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.DeviceVersionTextEdit = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.DeviceTypeTextEdit = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.deviceViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mvvmContext = new DevExpress.Utils.MVVM.MVVMContext(this.components);
-            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.comboBoxEdit2 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DeviceNameTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deviceViewBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PortTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DeviceTypeTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CollectionStateTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeviceNameTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDeviceName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PortTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForPort)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDeviceType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForDeviceVersion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForDeviceGroup)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CollectionStateTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCollectionState)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeviceGroupTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeviceVersionTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeviceTypeTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deviceViewBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvvmContext)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             this.SuspendLayout();
             // 
             // dataLayoutControl1
@@ -79,10 +79,10 @@
             this.dataLayoutControl1.AllowCustomization = false;
             this.dataLayoutControl1.Controls.Add(this.DeviceNameTextEdit);
             this.dataLayoutControl1.Controls.Add(this.PortTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.DeviceTypeTextEdit);
             this.dataLayoutControl1.Controls.Add(this.CollectionStateTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.comboBoxEdit1);
-            this.dataLayoutControl1.Controls.Add(this.comboBoxEdit2);
+            this.dataLayoutControl1.Controls.Add(this.DeviceGroupTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.DeviceVersionTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.DeviceTypeTextEdit);
             this.dataLayoutControl1.DataSource = this.deviceViewBindingSource;
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataLayoutControl1.Location = new System.Drawing.Point(60, 38);
@@ -91,64 +91,6 @@
             this.dataLayoutControl1.Root = this.layoutControlGroup1;
             this.dataLayoutControl1.Size = new System.Drawing.Size(1305, 779);
             this.dataLayoutControl1.TabIndex = 0;
-            // 
-            // DeviceNameTextEdit
-            // 
-            this.DeviceNameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.deviceViewBindingSource, "DeviceName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.DeviceNameTextEdit.Location = new System.Drawing.Point(76, 12);
-            this.DeviceNameTextEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.DeviceNameTextEdit.Name = "DeviceNameTextEdit";
-            this.DeviceNameTextEdit.Size = new System.Drawing.Size(1217, 23);
-            this.DeviceNameTextEdit.StyleController = this.dataLayoutControl1;
-            this.DeviceNameTextEdit.TabIndex = 4;
-            // 
-            // deviceViewBindingSource
-            // 
-            this.deviceViewBindingSource.DataSource = typeof(TrafficSignal.Models.Device);
-            // 
-            // PortTextEdit
-            // 
-            this.PortTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.deviceViewBindingSource, "Port", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.PortTextEdit.Location = new System.Drawing.Point(76, 39);
-            this.PortTextEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.PortTextEdit.Name = "PortTextEdit";
-            this.PortTextEdit.Properties.Appearance.Options.UseTextOptions = true;
-            this.PortTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.PortTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.PortTextEdit.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
-            this.PortTextEdit.Properties.MaskSettings.Set("mask", "N0");
-            this.PortTextEdit.Size = new System.Drawing.Size(1217, 23);
-            this.PortTextEdit.StyleController = this.dataLayoutControl1;
-            this.PortTextEdit.TabIndex = 5;
-            // 
-            // DeviceTypeTextEdit
-            // 
-            this.DeviceTypeTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.deviceViewBindingSource, "DeviceType", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.DeviceTypeTextEdit.Location = new System.Drawing.Point(76, 66);
-            this.DeviceTypeTextEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.DeviceTypeTextEdit.Name = "DeviceTypeTextEdit";
-            this.DeviceTypeTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.DeviceTypeTextEdit.Properties.Items.AddRange(new object[] {
-            "红绿灯",
-            "显示屏",
-            "声光报警器"});
-            this.DeviceTypeTextEdit.Size = new System.Drawing.Size(1217, 23);
-            this.DeviceTypeTextEdit.StyleController = this.dataLayoutControl1;
-            this.DeviceTypeTextEdit.TabIndex = 6;
-            // 
-            // CollectionStateTextEdit
-            // 
-            this.CollectionStateTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.deviceViewBindingSource, "CollectionState", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.CollectionStateTextEdit.Location = new System.Drawing.Point(76, 147);
-            this.CollectionStateTextEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.CollectionStateTextEdit.Name = "CollectionStateTextEdit";
-            this.CollectionStateTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.CollectionStateTextEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.CollectionStateTextEdit.Size = new System.Drawing.Size(1217, 23);
-            this.CollectionStateTextEdit.StyleController = this.dataLayoutControl1;
-            this.CollectionStateTextEdit.TabIndex = 7;
             // 
             // layoutControlGroup1
             // 
@@ -168,27 +110,52 @@
             this.ItemForDeviceName,
             this.ItemForPort,
             this.ItemForDeviceType,
-            this.layoutControlItem1,
-            this.ItemForCollectionState,
-            this.layoutControlItem2});
+            this.ItemForDeviceVersion,
+            this.ItemForDeviceGroup,
+            this.ItemForCollectionState});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(1285, 759);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(1279, 755);
+            // 
+            // DeviceNameTextEdit
+            // 
+            this.DeviceNameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.deviceViewBindingSource, "DeviceName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.DeviceNameTextEdit.Location = new System.Drawing.Point(81, 14);
+            this.DeviceNameTextEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.DeviceNameTextEdit.Name = "DeviceNameTextEdit";
+            this.DeviceNameTextEdit.Size = new System.Drawing.Size(1208, 23);
+            this.DeviceNameTextEdit.StyleController = this.dataLayoutControl1;
+            this.DeviceNameTextEdit.TabIndex = 4;
             // 
             // ItemForDeviceName
             // 
             this.ItemForDeviceName.Control = this.DeviceNameTextEdit;
             this.ItemForDeviceName.Location = new System.Drawing.Point(0, 0);
             this.ItemForDeviceName.Name = "ItemForDeviceName";
-            this.ItemForDeviceName.Size = new System.Drawing.Size(1285, 27);
+            this.ItemForDeviceName.Size = new System.Drawing.Size(1279, 27);
             this.ItemForDeviceName.TextSize = new System.Drawing.Size(60, 15);
+            // 
+            // PortTextEdit
+            // 
+            this.PortTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.deviceViewBindingSource, "Port", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.PortTextEdit.Location = new System.Drawing.Point(81, 41);
+            this.PortTextEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.PortTextEdit.Name = "PortTextEdit";
+            this.PortTextEdit.Properties.Appearance.Options.UseTextOptions = true;
+            this.PortTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.PortTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.PortTextEdit.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            this.PortTextEdit.Properties.MaskSettings.Set("mask", "N0");
+            this.PortTextEdit.Size = new System.Drawing.Size(1208, 23);
+            this.PortTextEdit.StyleController = this.dataLayoutControl1;
+            this.PortTextEdit.TabIndex = 5;
             // 
             // ItemForPort
             // 
             this.ItemForPort.Control = this.PortTextEdit;
             this.ItemForPort.Location = new System.Drawing.Point(0, 27);
             this.ItemForPort.Name = "ItemForPort";
-            this.ItemForPort.Size = new System.Drawing.Size(1285, 27);
+            this.ItemForPort.Size = new System.Drawing.Size(1279, 27);
             this.ItemForPort.TextSize = new System.Drawing.Size(60, 15);
             // 
             // ItemForDeviceType
@@ -196,24 +163,50 @@
             this.ItemForDeviceType.Control = this.DeviceTypeTextEdit;
             this.ItemForDeviceType.Location = new System.Drawing.Point(0, 54);
             this.ItemForDeviceType.Name = "ItemForDeviceType";
-            this.ItemForDeviceType.Size = new System.Drawing.Size(1285, 27);
+            this.ItemForDeviceType.Size = new System.Drawing.Size(1279, 27);
             this.ItemForDeviceType.TextSize = new System.Drawing.Size(60, 15);
+            // 
+            // ItemForDeviceVersion
+            // 
+            this.ItemForDeviceVersion.Control = this.DeviceVersionTextEdit;
+            this.ItemForDeviceVersion.Location = new System.Drawing.Point(0, 81);
+            this.ItemForDeviceVersion.Name = "ItemForDeviceVersion";
+            this.ItemForDeviceVersion.Size = new System.Drawing.Size(1279, 27);
+            this.ItemForDeviceVersion.TextSize = new System.Drawing.Size(60, 15);
+            // 
+            // ItemForDeviceGroup
+            // 
+            this.ItemForDeviceGroup.Control = this.DeviceGroupTextEdit;
+            this.ItemForDeviceGroup.Location = new System.Drawing.Point(0, 108);
+            this.ItemForDeviceGroup.Name = "ItemForDeviceGroup";
+            this.ItemForDeviceGroup.Size = new System.Drawing.Size(1279, 27);
+            this.ItemForDeviceGroup.TextSize = new System.Drawing.Size(60, 15);
+            // 
+            // CollectionStateTextEdit
+            // 
+            this.CollectionStateTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.deviceViewBindingSource, "CollectionState", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.CollectionStateTextEdit.Location = new System.Drawing.Point(81, 149);
+            this.CollectionStateTextEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.CollectionStateTextEdit.Name = "CollectionStateTextEdit";
+            this.CollectionStateTextEdit.Size = new System.Drawing.Size(1208, 23);
+            this.CollectionStateTextEdit.StyleController = this.dataLayoutControl1;
+            this.CollectionStateTextEdit.TabIndex = 9;
             // 
             // ItemForCollectionState
             // 
             this.ItemForCollectionState.Control = this.CollectionStateTextEdit;
             this.ItemForCollectionState.Location = new System.Drawing.Point(0, 135);
             this.ItemForCollectionState.Name = "ItemForCollectionState";
-            this.ItemForCollectionState.Size = new System.Drawing.Size(1285, 624);
+            this.ItemForCollectionState.Size = new System.Drawing.Size(1279, 620);
             this.ItemForCollectionState.TextSize = new System.Drawing.Size(60, 15);
             this.ItemForCollectionState.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
             // 
             // windowsUIButtonPanelCloseButton
             // 
             this.windowsUIButtonPanelCloseButton.ButtonInterval = 0;
-            windowsUIButtonImageOptions7.ImageUri.Uri = "Backward;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions1.ImageUri.Uri = "Backward;Size32x32;GrayScaled";
             this.windowsUIButtonPanelCloseButton.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("", true, windowsUIButtonImageOptions7, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
             this.windowsUIButtonPanelCloseButton.ContentAlignment = System.Drawing.ContentAlignment.TopCenter;
             this.windowsUIButtonPanelCloseButton.Dock = System.Windows.Forms.DockStyle.Left;
             this.windowsUIButtonPanelCloseButton.ForeColor = System.Drawing.Color.Gray;
@@ -245,17 +238,17 @@
             this.windowsUIButtonPanelMain.AppearanceButton.Pressed.Options.UseFont = true;
             this.windowsUIButtonPanelMain.AppearanceButton.Pressed.Options.UseForeColor = true;
             this.windowsUIButtonPanelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
-            windowsUIButtonImageOptions8.ImageUri.Uri = "Save;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions9.ImageUri.Uri = "SaveAndClose;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions10.ImageUri.Uri = "SaveAndNew;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions11.ImageUri.Uri = "Reset;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions12.ImageUri.Uri = "Edit/Delete;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions2.ImageUri.Uri = "Save;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions3.ImageUri.Uri = "SaveAndClose;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions4.ImageUri.Uri = "SaveAndNew;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions5.ImageUri.Uri = "Reset;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions6.ImageUri.Uri = "Edit/Delete;Size32x32;GrayScaled";
             this.windowsUIButtonPanelMain.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions8, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save And Close", true, windowsUIButtonImageOptions9, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save And New", true, windowsUIButtonImageOptions10, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Reset Changes", true, windowsUIButtonImageOptions11, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Delete", true, windowsUIButtonImageOptions12, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save And Close", true, windowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save And New", true, windowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Reset Changes", true, windowsUIButtonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Delete", true, windowsUIButtonImageOptions6, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
             this.windowsUIButtonPanelMain.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.windowsUIButtonPanelMain.EnableImageTransparency = true;
             this.windowsUIButtonPanelMain.ForeColor = System.Drawing.Color.White;
@@ -288,54 +281,60 @@
             this.labelControl.TabIndex = 1;
             this.labelControl.Text = "Device - Element View";
             // 
+            // DeviceGroupTextEdit
+            // 
+            this.DeviceGroupTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.deviceViewBindingSource, "DeviceGroup", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.DeviceGroupTextEdit.Location = new System.Drawing.Point(81, 122);
+            this.DeviceGroupTextEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.DeviceGroupTextEdit.Name = "DeviceGroupTextEdit";
+            this.DeviceGroupTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DeviceGroupTextEdit.Properties.Items.AddRange(new object[] {
+            "UP",
+            "DOWN"});
+            this.DeviceGroupTextEdit.Size = new System.Drawing.Size(1208, 23);
+            this.DeviceGroupTextEdit.StyleController = this.dataLayoutControl1;
+            this.DeviceGroupTextEdit.TabIndex = 8;
+            // 
+            // DeviceVersionTextEdit
+            // 
+            this.DeviceVersionTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.deviceViewBindingSource, "DeviceVersion", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.DeviceVersionTextEdit.Location = new System.Drawing.Point(81, 95);
+            this.DeviceVersionTextEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.DeviceVersionTextEdit.Name = "DeviceVersionTextEdit";
+            this.DeviceVersionTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DeviceVersionTextEdit.Properties.Items.AddRange(new object[] {
+            "大屏（横屏）",
+            "小屏（竖屏）"});
+            this.DeviceVersionTextEdit.Size = new System.Drawing.Size(1208, 23);
+            this.DeviceVersionTextEdit.StyleController = this.dataLayoutControl1;
+            this.DeviceVersionTextEdit.TabIndex = 7;
+            // 
+            // DeviceTypeTextEdit
+            // 
+            this.DeviceTypeTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.deviceViewBindingSource, "DeviceType", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.DeviceTypeTextEdit.Location = new System.Drawing.Point(81, 68);
+            this.DeviceTypeTextEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.DeviceTypeTextEdit.Name = "DeviceTypeTextEdit";
+            this.DeviceTypeTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DeviceTypeTextEdit.Properties.Items.AddRange(new object[] {
+            "显示器",
+            "红绿灯",
+            "声光报警器"});
+            this.DeviceTypeTextEdit.Size = new System.Drawing.Size(1208, 23);
+            this.DeviceTypeTextEdit.StyleController = this.dataLayoutControl1;
+            this.DeviceTypeTextEdit.TabIndex = 6;
+            // 
+            // deviceViewBindingSource
+            // 
+            this.deviceViewBindingSource.DataSource = typeof(TrafficSignal.Models.Device);
+            // 
             // mvvmContext
             // 
             this.mvvmContext.ContainerControl = this;
             this.mvvmContext.ViewModelType = typeof(TrafficSignal.ViewModels.DeviceViewModel);
-            // 
-            // comboBoxEdit1
-            // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(76, 93);
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Properties.Items.AddRange(new object[] {
-            "UP",
-            "DOWN"});
-            this.comboBoxEdit1.Size = new System.Drawing.Size(1217, 23);
-            this.comboBoxEdit1.StyleController = this.dataLayoutControl1;
-            this.comboBoxEdit1.TabIndex = 8;
-            // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.comboBoxEdit1;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 81);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1285, 27);
-            this.layoutControlItem1.Text = "设备分组";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(60, 15);
-            // 
-            // comboBoxEdit2
-            // 
-            this.comboBoxEdit2.Location = new System.Drawing.Point(76, 120);
-            this.comboBoxEdit2.Name = "comboBoxEdit2";
-            this.comboBoxEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit2.Properties.Items.AddRange(new object[] {
-            "大屏（横屏）",
-            "小屏（竖屏）"});
-            this.comboBoxEdit2.Size = new System.Drawing.Size(1217, 23);
-            this.comboBoxEdit2.StyleController = this.dataLayoutControl1;
-            this.comboBoxEdit2.TabIndex = 9;
-            // 
-            // layoutControlItem2
-            // 
-            this.layoutControlItem2.Control = this.comboBoxEdit2;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 108);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(1285, 27);
-            this.layoutControlItem2.Text = "设备型号";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(60, 15);
             // 
             // DeviceView
             // 
@@ -353,22 +352,22 @@
             this.Size = new System.Drawing.Size(1365, 886);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DeviceNameTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deviceViewBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PortTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DeviceTypeTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CollectionStateTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeviceNameTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDeviceName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PortTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForPort)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDeviceType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForDeviceVersion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForDeviceGroup)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CollectionStateTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCollectionState)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeviceGroupTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeviceVersionTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeviceTypeTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deviceViewBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvvmContext)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -384,16 +383,16 @@
         private System.Windows.Forms.BindingSource deviceViewBindingSource;
         private DevExpress.XtraEditors.TextEdit DeviceNameTextEdit;
         private DevExpress.XtraEditors.TextEdit PortTextEdit;
+        private DevExpress.XtraEditors.TextEdit CollectionStateTextEdit;
+        private DevExpress.XtraEditors.ComboBoxEdit DeviceGroupTextEdit;
+        private DevExpress.XtraEditors.ComboBoxEdit DeviceVersionTextEdit;
         private DevExpress.XtraEditors.ComboBoxEdit DeviceTypeTextEdit;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
         private DevExpress.XtraLayout.LayoutControlItem ItemForDeviceName;
         private DevExpress.XtraLayout.LayoutControlItem ItemForPort;
         private DevExpress.XtraLayout.LayoutControlItem ItemForDeviceType;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForDeviceVersion;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForDeviceGroup;
         private DevExpress.XtraLayout.LayoutControlItem ItemForCollectionState;
-        private DevExpress.XtraEditors.ComboBoxEdit CollectionStateTextEdit;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit2;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
     }
 }

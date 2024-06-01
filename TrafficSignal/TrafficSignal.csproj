@@ -261,7 +261,6 @@
     <Compile Include="Views\MySqlContextView.designer.cs">
       <DependentUpon>MySqlContextView.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

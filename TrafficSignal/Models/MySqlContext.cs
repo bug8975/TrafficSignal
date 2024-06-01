@@ -40,6 +40,12 @@ namespace TrafficSignal.Models
                     .HasColumnType("varchar(255)")
                     .HasDefaultValueSql("'未连接'");
 
+                entity.Property(e => e.DeviceGroup)
+                    .IsRequired()
+                    .HasColumnName("device_group")
+                    .HasColumnType("varchar(255)")
+                    .HasDefaultValueSql("'UP'");
+
                 entity.Property(e => e.DeviceName)
                     .IsRequired()
                     .HasColumnName("device_name")
@@ -53,16 +59,9 @@ namespace TrafficSignal.Models
                     .HasDefaultValueSql("'红绿灯'");
 
                 entity.Property(e => e.DeviceVersion)
-                    .IsRequired()
                     .HasColumnName("device_version")
                     .HasColumnType("varchar(255)")
                     .HasDefaultValueSql("''");
-
-                entity.Property(e => e.DeviceGroup)
-                    .IsRequired()
-                    .HasColumnName("device_group")
-                    .HasColumnType("varchar(255)")
-                    .HasDefaultValueSql("'UP'");
 
                 entity.Property(e => e.Port)
                     .HasColumnName("port")

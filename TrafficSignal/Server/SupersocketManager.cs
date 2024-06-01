@@ -1,9 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using SuperSocket.SocketBase;
+﻿using SuperSocket.SocketBase;
 using SuperSocket.SocketBase.Config;
 using SuperSocket.SocketBase.Protocol;
-using SuperSocket.SocketEngine;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -268,7 +265,7 @@ namespace TrafficSignal.Server
                 {
                     session.Send(byteArray, 0, byteArray.Length);
                 }
-                Task.Delay(50); // 确保每条消息有时间发送
+                Task.Delay(TimeSpan.FromMilliseconds(50)).Wait();
 
                 return "消息发送成功";
             }
@@ -278,7 +275,6 @@ namespace TrafficSignal.Server
                 return $"消息发送失败: {ex.Message}";
             }
         }
-
 
         // 处理来自固定端口服务器的请求
         public void HandleFixedPortRequest(AppSession session, StringRequestInfo requestInfo)
@@ -364,7 +360,7 @@ namespace TrafficSignal.Server
             // 根据设备类型获取对应的枚举值
             switch (device.DeviceType)
             {
-                case "显示屏":
+                case "显示器":
                     if (device.DeviceVersion.Equals("大屏（横屏）"))
                         message = EnumHelper.GetScreenBigCommandHexValueByIntValue(num);
                     else if (device.DeviceVersion.Equals("小屏（竖屏）"))
@@ -388,7 +384,7 @@ namespace TrafficSignal.Server
             if (!message.Contains(",") && !message.Contains(";"))
             {
                 // 第一种情况：message中不包含逗号和分号
-                SendMessageToClient(device, message);
+                SendMessageToClient(device, message.Trim());
             }
             else if (message.Contains(",") && !message.Contains(";"))
             {
