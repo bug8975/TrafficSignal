@@ -22,6 +22,9 @@ namespace TrafficSignal.Models
         [Display(Name = "设备分组")]
         public string DeviceGroup { get; set; }
 
+        [Display(Name = "车道地址列表")]
+        public string LaneAddresses { get; set; }
+
         [Display(Name = "设备状态")]
         public string CollectionState { get; set; }
     }

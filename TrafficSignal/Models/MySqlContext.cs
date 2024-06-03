@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace TrafficSignal.Models
 {
@@ -62,6 +64,11 @@ namespace TrafficSignal.Models
                     .HasColumnName("device_version")
                     .HasColumnType("varchar(255)")
                     .HasDefaultValueSql("''");
+
+                entity.Property(e => e.LaneAddresses)
+                    .HasColumnName("lane_addresses")
+                    .HasColumnType("varchar(255)")
+                    .HasDefaultValueSql("'01'");
 
                 entity.Property(e => e.Port)
                     .HasColumnName("port")

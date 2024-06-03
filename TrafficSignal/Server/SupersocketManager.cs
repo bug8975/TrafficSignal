@@ -390,10 +390,7 @@ namespace TrafficSignal.Server
                         message = EnumHelper.GetScreenSmallCommandHexValueByIntValue(num);
                     break;
                 case "红绿灯":
-                    if (device.DeviceGroup.Equals("UP"))
-                        message = EnumHelper.GetSignalUpCommandHexValueByIntValue(num);
-                    else if (device.DeviceGroup.Equals("DOWN"))
-                        message = EnumHelper.GetSignalDownCommandHexValueByIntValue(num);
+                    message = EnumHelper.GetSignalCommandHexValueByIntValue(device, num);
                     break;
                 case "声光报警器":
                     message = EnumHelper.GetAlarmCommandHexValueByIntValue(num);
@@ -406,16 +403,28 @@ namespace TrafficSignal.Server
         {
             if (!message.Contains(",") && !message.Contains(";"))
             {
-                // 第一种情况：message中不包含逗号和分号
-                SendMessageToClient(device, message.Trim());
+                // 第一种情况：message中不包含逗号和分号,声光报警器
+                SendMessageToClient(device, message);
             }
             else if (message.Contains(",") && !message.Contains(";"))
             {
                 // 第二种情况：message中包含逗号且不包含分号
-                var messages = message.Split(',');
-                foreach (var msg in messages)
+                if (message.Contains('&'))
                 {
-                    SendMessageToClient(device, msg.Trim());
+                    foreach (var plcCommand in message.Split('&'))
+                    {
+                        foreach (var msg in plcCommand.Split(','))
+                        {
+                            SendMessageToClient(device, msg);
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (var msg in message.Split(','))
+                    {
+                        SendMessageToClient(device, msg);
+                    }
                 }
             }
             else if (message.Contains(";"))
@@ -429,19 +438,70 @@ namespace TrafficSignal.Server
 
         private void StartFlashingYellowLight(Device device, string message, CancellationToken token)
         {
-            Task.Run(async () =>
+            Task.Run(() =>
             {
-                var groups = message.Split(';');
                 while (!token.IsCancellationRequested)
                 {
-                    foreach (var group in groups)
+                    try
                     {
-                        var messages = group.Split(',');
-                        foreach (var msg in messages)
+                        if (token.IsCancellationRequested)
                         {
-                            SendMessageToClient(device, msg.Trim());
+                            break;
                         }
-                        await Task.Delay(1000, token);
+
+                        var plcCommands = message.Split('&');
+                        var commandGroups = plcCommands
+                            .Select(plc => plc.Split(';').Select(g => g.Split(',')).ToArray())
+                            .ToArray();
+
+                        if (commandGroups.Any(g => g.Length != 2))
+                        {
+                            log.Error("Each PLC group should contain exactly two sets of commands separated by ';'");
+                            throw new Exception("Each PLC group should contain exactly two sets of commands separated by ';'");
+                        }
+
+                        var firstGroupCommands = commandGroups.SelectMany(g => g[0]).ToList();
+                        var secondGroupCommands = commandGroups.SelectMany(g => g[1]).ToList();
+
+                        foreach (var msg in firstGroupCommands)
+                        {
+                            SendMessageToClient(device, msg);
+                        }
+
+                        if (token.IsCancellationRequested)
+                        {
+                            break;
+                        }
+
+                        Task.Delay(TimeSpan.FromSeconds(10)).Wait();
+
+                        if (token.IsCancellationRequested)
+                        {
+                            break;
+                        }
+
+                        foreach (var msg in secondGroupCommands)
+                        {
+                            SendMessageToClient(device, msg);
+                        }
+
+                        if (token.IsCancellationRequested)
+                        {
+                            break;
+                        }
+
+                        Task.Delay(TimeSpan.FromSeconds(10)).Wait();
+
+                        if (token.IsCancellationRequested)
+                        {
+                            break;
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        log.Error("Error processing command string", ex);
+                        throw ex;
                     }
                 }
             }, token);

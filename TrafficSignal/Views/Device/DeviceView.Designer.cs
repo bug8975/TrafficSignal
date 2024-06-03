@@ -35,42 +35,46 @@
             DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions5 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions6 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
+            this.DeviceNameTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.deviceViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.PortTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.CollectionStateTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.DeviceGroupTextEdit = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.DeviceVersionTextEdit = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.DeviceTypeTextEdit = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.LaneAddressesTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.DeviceNameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.ItemForDeviceName = new DevExpress.XtraLayout.LayoutControlItem();
-            this.PortTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.ItemForPort = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForDeviceType = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForDeviceVersion = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForDeviceGroup = new DevExpress.XtraLayout.LayoutControlItem();
-            this.CollectionStateTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.ItemForCollectionState = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForLaneAddresses = new DevExpress.XtraLayout.LayoutControlItem();
             this.windowsUIButtonPanelCloseButton = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
             this.windowsUIButtonPanelMain = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
             this.labelControl = new DevExpress.XtraEditors.LabelControl();
-            this.DeviceGroupTextEdit = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.DeviceVersionTextEdit = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.DeviceTypeTextEdit = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.deviceViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mvvmContext = new DevExpress.Utils.MVVM.MVVMContext(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DeviceNameTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deviceViewBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PortTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CollectionStateTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeviceGroupTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeviceVersionTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeviceTypeTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LaneAddressesTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DeviceNameTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDeviceName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PortTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForPort)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDeviceType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDeviceVersion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDeviceGroup)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CollectionStateTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCollectionState)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DeviceGroupTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DeviceVersionTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DeviceTypeTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deviceViewBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForLaneAddresses)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvvmContext)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,6 +87,7 @@
             this.dataLayoutControl1.Controls.Add(this.DeviceGroupTextEdit);
             this.dataLayoutControl1.Controls.Add(this.DeviceVersionTextEdit);
             this.dataLayoutControl1.Controls.Add(this.DeviceTypeTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.LaneAddressesTextEdit);
             this.dataLayoutControl1.DataSource = this.deviceViewBindingSource;
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataLayoutControl1.Location = new System.Drawing.Point(60, 38);
@@ -91,6 +96,100 @@
             this.dataLayoutControl1.Root = this.layoutControlGroup1;
             this.dataLayoutControl1.Size = new System.Drawing.Size(1305, 779);
             this.dataLayoutControl1.TabIndex = 0;
+            // 
+            // DeviceNameTextEdit
+            // 
+            this.DeviceNameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.deviceViewBindingSource, "DeviceName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.DeviceNameTextEdit.Location = new System.Drawing.Point(76, 12);
+            this.DeviceNameTextEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.DeviceNameTextEdit.Name = "DeviceNameTextEdit";
+            this.DeviceNameTextEdit.Size = new System.Drawing.Size(1217, 23);
+            this.DeviceNameTextEdit.StyleController = this.dataLayoutControl1;
+            this.DeviceNameTextEdit.TabIndex = 4;
+            // 
+            // deviceViewBindingSource
+            // 
+            this.deviceViewBindingSource.DataSource = typeof(TrafficSignal.Models.Device);
+            // 
+            // PortTextEdit
+            // 
+            this.PortTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.deviceViewBindingSource, "Port", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.PortTextEdit.Location = new System.Drawing.Point(76, 39);
+            this.PortTextEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.PortTextEdit.Name = "PortTextEdit";
+            this.PortTextEdit.Properties.Appearance.Options.UseTextOptions = true;
+            this.PortTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.PortTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.PortTextEdit.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            this.PortTextEdit.Properties.MaskSettings.Set("mask", "N0");
+            this.PortTextEdit.Size = new System.Drawing.Size(1217, 23);
+            this.PortTextEdit.StyleController = this.dataLayoutControl1;
+            this.PortTextEdit.TabIndex = 5;
+            // 
+            // CollectionStateTextEdit
+            // 
+            this.CollectionStateTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.deviceViewBindingSource, "CollectionState", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.CollectionStateTextEdit.Location = new System.Drawing.Point(76, 174);
+            this.CollectionStateTextEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.CollectionStateTextEdit.Name = "CollectionStateTextEdit";
+            this.CollectionStateTextEdit.Size = new System.Drawing.Size(1217, 23);
+            this.CollectionStateTextEdit.StyleController = this.dataLayoutControl1;
+            this.CollectionStateTextEdit.TabIndex = 9;
+            // 
+            // DeviceGroupTextEdit
+            // 
+            this.DeviceGroupTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.deviceViewBindingSource, "DeviceGroup", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.DeviceGroupTextEdit.Location = new System.Drawing.Point(76, 120);
+            this.DeviceGroupTextEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.DeviceGroupTextEdit.Name = "DeviceGroupTextEdit";
+            this.DeviceGroupTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DeviceGroupTextEdit.Properties.Items.AddRange(new object[] {
+            "UP",
+            "DOWN"});
+            this.DeviceGroupTextEdit.Size = new System.Drawing.Size(1217, 23);
+            this.DeviceGroupTextEdit.StyleController = this.dataLayoutControl1;
+            this.DeviceGroupTextEdit.TabIndex = 8;
+            // 
+            // DeviceVersionTextEdit
+            // 
+            this.DeviceVersionTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.deviceViewBindingSource, "DeviceVersion", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.DeviceVersionTextEdit.Location = new System.Drawing.Point(76, 93);
+            this.DeviceVersionTextEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.DeviceVersionTextEdit.Name = "DeviceVersionTextEdit";
+            this.DeviceVersionTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DeviceVersionTextEdit.Properties.Items.AddRange(new object[] {
+            "大屏（横屏）",
+            "小屏（竖屏）"});
+            this.DeviceVersionTextEdit.Size = new System.Drawing.Size(1217, 23);
+            this.DeviceVersionTextEdit.StyleController = this.dataLayoutControl1;
+            this.DeviceVersionTextEdit.TabIndex = 7;
+            // 
+            // DeviceTypeTextEdit
+            // 
+            this.DeviceTypeTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.deviceViewBindingSource, "DeviceType", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.DeviceTypeTextEdit.Location = new System.Drawing.Point(76, 66);
+            this.DeviceTypeTextEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.DeviceTypeTextEdit.Name = "DeviceTypeTextEdit";
+            this.DeviceTypeTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DeviceTypeTextEdit.Properties.Items.AddRange(new object[] {
+            "显示器",
+            "红绿灯",
+            "声光报警器"});
+            this.DeviceTypeTextEdit.Size = new System.Drawing.Size(1217, 23);
+            this.DeviceTypeTextEdit.StyleController = this.dataLayoutControl1;
+            this.DeviceTypeTextEdit.TabIndex = 6;
+            // 
+            // LaneAddressesTextEdit
+            // 
+            this.LaneAddressesTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.deviceViewBindingSource, "LaneAddresses", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.LaneAddressesTextEdit.Location = new System.Drawing.Point(76, 147);
+            this.LaneAddressesTextEdit.Name = "LaneAddressesTextEdit";
+            this.LaneAddressesTextEdit.Size = new System.Drawing.Size(1217, 23);
+            this.LaneAddressesTextEdit.StyleController = this.dataLayoutControl1;
+            this.LaneAddressesTextEdit.TabIndex = 10;
             // 
             // layoutControlGroup1
             // 
@@ -112,50 +211,26 @@
             this.ItemForDeviceType,
             this.ItemForDeviceVersion,
             this.ItemForDeviceGroup,
-            this.ItemForCollectionState});
+            this.ItemForCollectionState,
+            this.ItemForLaneAddresses});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(1279, 755);
-            // 
-            // DeviceNameTextEdit
-            // 
-            this.DeviceNameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.deviceViewBindingSource, "DeviceName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.DeviceNameTextEdit.Location = new System.Drawing.Point(81, 14);
-            this.DeviceNameTextEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.DeviceNameTextEdit.Name = "DeviceNameTextEdit";
-            this.DeviceNameTextEdit.Size = new System.Drawing.Size(1208, 23);
-            this.DeviceNameTextEdit.StyleController = this.dataLayoutControl1;
-            this.DeviceNameTextEdit.TabIndex = 4;
+            this.layoutControlGroup2.Size = new System.Drawing.Size(1285, 759);
             // 
             // ItemForDeviceName
             // 
             this.ItemForDeviceName.Control = this.DeviceNameTextEdit;
             this.ItemForDeviceName.Location = new System.Drawing.Point(0, 0);
             this.ItemForDeviceName.Name = "ItemForDeviceName";
-            this.ItemForDeviceName.Size = new System.Drawing.Size(1279, 27);
+            this.ItemForDeviceName.Size = new System.Drawing.Size(1285, 27);
             this.ItemForDeviceName.TextSize = new System.Drawing.Size(60, 15);
-            // 
-            // PortTextEdit
-            // 
-            this.PortTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.deviceViewBindingSource, "Port", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.PortTextEdit.Location = new System.Drawing.Point(81, 41);
-            this.PortTextEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.PortTextEdit.Name = "PortTextEdit";
-            this.PortTextEdit.Properties.Appearance.Options.UseTextOptions = true;
-            this.PortTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.PortTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.PortTextEdit.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
-            this.PortTextEdit.Properties.MaskSettings.Set("mask", "N0");
-            this.PortTextEdit.Size = new System.Drawing.Size(1208, 23);
-            this.PortTextEdit.StyleController = this.dataLayoutControl1;
-            this.PortTextEdit.TabIndex = 5;
             // 
             // ItemForPort
             // 
             this.ItemForPort.Control = this.PortTextEdit;
             this.ItemForPort.Location = new System.Drawing.Point(0, 27);
             this.ItemForPort.Name = "ItemForPort";
-            this.ItemForPort.Size = new System.Drawing.Size(1279, 27);
+            this.ItemForPort.Size = new System.Drawing.Size(1285, 27);
             this.ItemForPort.TextSize = new System.Drawing.Size(60, 15);
             // 
             // ItemForDeviceType
@@ -163,7 +238,7 @@
             this.ItemForDeviceType.Control = this.DeviceTypeTextEdit;
             this.ItemForDeviceType.Location = new System.Drawing.Point(0, 54);
             this.ItemForDeviceType.Name = "ItemForDeviceType";
-            this.ItemForDeviceType.Size = new System.Drawing.Size(1279, 27);
+            this.ItemForDeviceType.Size = new System.Drawing.Size(1285, 27);
             this.ItemForDeviceType.TextSize = new System.Drawing.Size(60, 15);
             // 
             // ItemForDeviceVersion
@@ -171,7 +246,7 @@
             this.ItemForDeviceVersion.Control = this.DeviceVersionTextEdit;
             this.ItemForDeviceVersion.Location = new System.Drawing.Point(0, 81);
             this.ItemForDeviceVersion.Name = "ItemForDeviceVersion";
-            this.ItemForDeviceVersion.Size = new System.Drawing.Size(1279, 27);
+            this.ItemForDeviceVersion.Size = new System.Drawing.Size(1285, 27);
             this.ItemForDeviceVersion.TextSize = new System.Drawing.Size(60, 15);
             // 
             // ItemForDeviceGroup
@@ -179,27 +254,26 @@
             this.ItemForDeviceGroup.Control = this.DeviceGroupTextEdit;
             this.ItemForDeviceGroup.Location = new System.Drawing.Point(0, 108);
             this.ItemForDeviceGroup.Name = "ItemForDeviceGroup";
-            this.ItemForDeviceGroup.Size = new System.Drawing.Size(1279, 27);
+            this.ItemForDeviceGroup.Size = new System.Drawing.Size(1285, 27);
             this.ItemForDeviceGroup.TextSize = new System.Drawing.Size(60, 15);
-            // 
-            // CollectionStateTextEdit
-            // 
-            this.CollectionStateTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.deviceViewBindingSource, "CollectionState", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.CollectionStateTextEdit.Location = new System.Drawing.Point(81, 149);
-            this.CollectionStateTextEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.CollectionStateTextEdit.Name = "CollectionStateTextEdit";
-            this.CollectionStateTextEdit.Size = new System.Drawing.Size(1208, 23);
-            this.CollectionStateTextEdit.StyleController = this.dataLayoutControl1;
-            this.CollectionStateTextEdit.TabIndex = 9;
             // 
             // ItemForCollectionState
             // 
             this.ItemForCollectionState.Control = this.CollectionStateTextEdit;
-            this.ItemForCollectionState.Location = new System.Drawing.Point(0, 135);
+            this.ItemForCollectionState.Location = new System.Drawing.Point(0, 162);
             this.ItemForCollectionState.Name = "ItemForCollectionState";
-            this.ItemForCollectionState.Size = new System.Drawing.Size(1279, 620);
+            this.ItemForCollectionState.Size = new System.Drawing.Size(1285, 597);
             this.ItemForCollectionState.TextSize = new System.Drawing.Size(60, 15);
             this.ItemForCollectionState.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+            // 
+            // ItemForLaneAddresses
+            // 
+            this.ItemForLaneAddresses.Control = this.LaneAddressesTextEdit;
+            this.ItemForLaneAddresses.Location = new System.Drawing.Point(0, 135);
+            this.ItemForLaneAddresses.Name = "ItemForLaneAddresses";
+            this.ItemForLaneAddresses.Size = new System.Drawing.Size(1285, 27);
+            this.ItemForLaneAddresses.Text = "车道地址";
+            this.ItemForLaneAddresses.TextSize = new System.Drawing.Size(60, 15);
             // 
             // windowsUIButtonPanelCloseButton
             // 
@@ -281,56 +355,6 @@
             this.labelControl.TabIndex = 1;
             this.labelControl.Text = "Device - Element View";
             // 
-            // DeviceGroupTextEdit
-            // 
-            this.DeviceGroupTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.deviceViewBindingSource, "DeviceGroup", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.DeviceGroupTextEdit.Location = new System.Drawing.Point(81, 122);
-            this.DeviceGroupTextEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.DeviceGroupTextEdit.Name = "DeviceGroupTextEdit";
-            this.DeviceGroupTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.DeviceGroupTextEdit.Properties.Items.AddRange(new object[] {
-            "UP",
-            "DOWN"});
-            this.DeviceGroupTextEdit.Size = new System.Drawing.Size(1208, 23);
-            this.DeviceGroupTextEdit.StyleController = this.dataLayoutControl1;
-            this.DeviceGroupTextEdit.TabIndex = 8;
-            // 
-            // DeviceVersionTextEdit
-            // 
-            this.DeviceVersionTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.deviceViewBindingSource, "DeviceVersion", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.DeviceVersionTextEdit.Location = new System.Drawing.Point(81, 95);
-            this.DeviceVersionTextEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.DeviceVersionTextEdit.Name = "DeviceVersionTextEdit";
-            this.DeviceVersionTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.DeviceVersionTextEdit.Properties.Items.AddRange(new object[] {
-            "大屏（横屏）",
-            "小屏（竖屏）"});
-            this.DeviceVersionTextEdit.Size = new System.Drawing.Size(1208, 23);
-            this.DeviceVersionTextEdit.StyleController = this.dataLayoutControl1;
-            this.DeviceVersionTextEdit.TabIndex = 7;
-            // 
-            // DeviceTypeTextEdit
-            // 
-            this.DeviceTypeTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.deviceViewBindingSource, "DeviceType", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.DeviceTypeTextEdit.Location = new System.Drawing.Point(81, 68);
-            this.DeviceTypeTextEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.DeviceTypeTextEdit.Name = "DeviceTypeTextEdit";
-            this.DeviceTypeTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.DeviceTypeTextEdit.Properties.Items.AddRange(new object[] {
-            "显示器",
-            "红绿灯",
-            "声光报警器"});
-            this.DeviceTypeTextEdit.Size = new System.Drawing.Size(1208, 23);
-            this.DeviceTypeTextEdit.StyleController = this.dataLayoutControl1;
-            this.DeviceTypeTextEdit.TabIndex = 6;
-            // 
-            // deviceViewBindingSource
-            // 
-            this.deviceViewBindingSource.DataSource = typeof(TrafficSignal.Models.Device);
-            // 
             // mvvmContext
             // 
             this.mvvmContext.ContainerControl = this;
@@ -352,21 +376,23 @@
             this.Size = new System.Drawing.Size(1365, 886);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DeviceNameTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deviceViewBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PortTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CollectionStateTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeviceGroupTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeviceVersionTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeviceTypeTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LaneAddressesTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DeviceNameTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDeviceName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PortTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForPort)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDeviceType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDeviceVersion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDeviceGroup)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CollectionStateTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCollectionState)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DeviceGroupTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DeviceVersionTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DeviceTypeTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deviceViewBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForLaneAddresses)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvvmContext)).EndInit();
             this.ResumeLayout(false);
 
@@ -394,5 +420,7 @@
         private DevExpress.XtraLayout.LayoutControlItem ItemForDeviceVersion;
         private DevExpress.XtraLayout.LayoutControlItem ItemForDeviceGroup;
         private DevExpress.XtraLayout.LayoutControlItem ItemForCollectionState;
+        private DevExpress.XtraEditors.TextEdit LaneAddressesTextEdit;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForLaneAddresses;
     }
 }

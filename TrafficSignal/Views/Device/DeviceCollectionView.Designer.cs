@@ -40,10 +40,6 @@
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.deviceCollectionViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.mvvmContext = new DevExpress.Utils.MVVM.MVVMContext(this.components);
             this.labelControl = new DevExpress.XtraEditors.LabelControl();
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
@@ -51,8 +47,13 @@
             this.itemLabel = new DevExpress.XtraLayout.LayoutControlItem();
             this.itemGrid = new DevExpress.XtraLayout.LayoutControlItem();
             this.windowsUIButtonPanel = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDeviceName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPort = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDeviceType = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDeviceVersion = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDeviceGroup = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCollectionState = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLaneAddresses = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deviceCollectionViewBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
@@ -84,12 +85,13 @@
             // gridView
             // 
             this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn1,
-            this.gridColumn2,
-            this.gridColumn3,
-            this.gridColumn5,
-            this.gridColumn6,
-            this.gridColumn4});
+            this.colDeviceName,
+            this.colPort,
+            this.colDeviceType,
+            this.colDeviceVersion,
+            this.colDeviceGroup,
+            this.colLaneAddresses,
+            this.colCollectionState});
             this.gridView.DetailHeight = 404;
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
@@ -102,66 +104,6 @@
             this.gridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
             this.gridView.OptionsView.ShowGroupPanel = false;
             this.gridView.OptionsView.ShowIndicator = false;
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.AppearanceCell.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridColumn1.AppearanceCell.Options.UseFont = true;
-            this.gridColumn1.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn1.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridColumn1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn1.FieldName = "DeviceName";
-            this.gridColumn1.MinWidth = 27;
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 100;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.AppearanceCell.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridColumn2.AppearanceCell.Options.UseFont = true;
-            this.gridColumn2.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn2.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn2.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridColumn2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn2.FieldName = "Port";
-            this.gridColumn2.MinWidth = 27;
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
-            this.gridColumn2.Width = 100;
-            // 
-            // gridColumn3
-            // 
-            this.gridColumn3.AppearanceCell.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridColumn3.AppearanceCell.Options.UseFont = true;
-            this.gridColumn3.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn3.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn3.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridColumn3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn3.FieldName = "DeviceType";
-            this.gridColumn3.MinWidth = 27;
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 100;
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.AppearanceCell.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridColumn4.AppearanceCell.Options.UseFont = true;
-            this.gridColumn4.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn4.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn4.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridColumn4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn4.FieldName = "CollectionState";
-            this.gridColumn4.MinWidth = 27;
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 5;
-            this.gridColumn4.Width = 100;
             // 
             // mvvmContext
             // 
@@ -282,33 +224,125 @@
             this.windowsUIButtonPanel.Text = "windowsUIButtonPanel";
             this.windowsUIButtonPanel.UseButtonBackgroundImages = false;
             // 
-            // gridColumn5
+            // colDeviceName
             // 
-            this.gridColumn5.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn5.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn5.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridColumn5.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn5.Caption = "设备型号";
-            this.gridColumn5.FieldName = "DeviceVersion";
-            this.gridColumn5.MinWidth = 25;
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 3;
-            this.gridColumn5.Width = 94;
+            this.colDeviceName.AppearanceCell.Options.UseTextOptions = true;
+            this.colDeviceName.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colDeviceName.AppearanceHeader.Options.UseTextOptions = true;
+            this.colDeviceName.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colDeviceName.FieldName = "DeviceName";
+            this.colDeviceName.MinWidth = 25;
+            this.colDeviceName.Name = "colDeviceName";
+            this.colDeviceName.OptionsColumn.AllowEdit = false;
+            this.colDeviceName.OptionsColumn.AllowFocus = false;
+            this.colDeviceName.OptionsColumn.FixedWidth = true;
+            this.colDeviceName.OptionsColumn.ReadOnly = true;
+            this.colDeviceName.Visible = true;
+            this.colDeviceName.VisibleIndex = 0;
+            this.colDeviceName.Width = 94;
             // 
-            // gridColumn6
+            // colPort
             // 
-            this.gridColumn6.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumn6.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn6.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridColumn6.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn6.Caption = "设备分组";
-            this.gridColumn6.FieldName = "DeviceGroup";
-            this.gridColumn6.MinWidth = 25;
-            this.gridColumn6.Name = "gridColumn6";
-            this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 4;
-            this.gridColumn6.Width = 94;
+            this.colPort.AppearanceCell.Options.UseTextOptions = true;
+            this.colPort.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colPort.AppearanceHeader.Options.UseTextOptions = true;
+            this.colPort.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colPort.FieldName = "Port";
+            this.colPort.MinWidth = 25;
+            this.colPort.Name = "colPort";
+            this.colPort.OptionsColumn.AllowEdit = false;
+            this.colPort.OptionsColumn.AllowFocus = false;
+            this.colPort.OptionsColumn.FixedWidth = true;
+            this.colPort.OptionsColumn.ReadOnly = true;
+            this.colPort.Visible = true;
+            this.colPort.VisibleIndex = 1;
+            this.colPort.Width = 94;
+            // 
+            // colDeviceType
+            // 
+            this.colDeviceType.AppearanceCell.Options.UseTextOptions = true;
+            this.colDeviceType.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colDeviceType.AppearanceHeader.Options.UseTextOptions = true;
+            this.colDeviceType.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colDeviceType.FieldName = "DeviceType";
+            this.colDeviceType.MinWidth = 25;
+            this.colDeviceType.Name = "colDeviceType";
+            this.colDeviceType.OptionsColumn.AllowEdit = false;
+            this.colDeviceType.OptionsColumn.AllowFocus = false;
+            this.colDeviceType.OptionsColumn.FixedWidth = true;
+            this.colDeviceType.OptionsColumn.ReadOnly = true;
+            this.colDeviceType.Visible = true;
+            this.colDeviceType.VisibleIndex = 2;
+            this.colDeviceType.Width = 94;
+            // 
+            // colDeviceVersion
+            // 
+            this.colDeviceVersion.AppearanceCell.Options.UseTextOptions = true;
+            this.colDeviceVersion.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colDeviceVersion.AppearanceHeader.Options.UseTextOptions = true;
+            this.colDeviceVersion.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colDeviceVersion.FieldName = "DeviceVersion";
+            this.colDeviceVersion.MinWidth = 25;
+            this.colDeviceVersion.Name = "colDeviceVersion";
+            this.colDeviceVersion.OptionsColumn.AllowEdit = false;
+            this.colDeviceVersion.OptionsColumn.AllowFocus = false;
+            this.colDeviceVersion.OptionsColumn.FixedWidth = true;
+            this.colDeviceVersion.OptionsColumn.ReadOnly = true;
+            this.colDeviceVersion.Visible = true;
+            this.colDeviceVersion.VisibleIndex = 3;
+            this.colDeviceVersion.Width = 94;
+            // 
+            // colDeviceGroup
+            // 
+            this.colDeviceGroup.AppearanceCell.Options.UseTextOptions = true;
+            this.colDeviceGroup.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colDeviceGroup.AppearanceHeader.Options.UseTextOptions = true;
+            this.colDeviceGroup.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colDeviceGroup.FieldName = "DeviceGroup";
+            this.colDeviceGroup.MinWidth = 25;
+            this.colDeviceGroup.Name = "colDeviceGroup";
+            this.colDeviceGroup.OptionsColumn.AllowEdit = false;
+            this.colDeviceGroup.OptionsColumn.AllowFocus = false;
+            this.colDeviceGroup.OptionsColumn.FixedWidth = true;
+            this.colDeviceGroup.OptionsColumn.ReadOnly = true;
+            this.colDeviceGroup.Visible = true;
+            this.colDeviceGroup.VisibleIndex = 4;
+            this.colDeviceGroup.Width = 94;
+            // 
+            // colCollectionState
+            // 
+            this.colCollectionState.AppearanceCell.Options.UseTextOptions = true;
+            this.colCollectionState.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colCollectionState.AppearanceHeader.Options.UseTextOptions = true;
+            this.colCollectionState.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colCollectionState.FieldName = "CollectionState";
+            this.colCollectionState.MinWidth = 25;
+            this.colCollectionState.Name = "colCollectionState";
+            this.colCollectionState.OptionsColumn.AllowEdit = false;
+            this.colCollectionState.OptionsColumn.AllowFocus = false;
+            this.colCollectionState.OptionsColumn.FixedWidth = true;
+            this.colCollectionState.OptionsColumn.ReadOnly = true;
+            this.colCollectionState.Visible = true;
+            this.colCollectionState.VisibleIndex = 6;
+            this.colCollectionState.Width = 94;
+            // 
+            // colLaneAddresses
+            // 
+            this.colLaneAddresses.AppearanceCell.Options.UseTextOptions = true;
+            this.colLaneAddresses.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colLaneAddresses.AppearanceHeader.Options.UseTextOptions = true;
+            this.colLaneAddresses.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colLaneAddresses.Caption = "车道地址列表";
+            this.colLaneAddresses.FieldName = "LaneAddresses";
+            this.colLaneAddresses.MinWidth = 25;
+            this.colLaneAddresses.Name = "colLaneAddresses";
+            this.colLaneAddresses.OptionsColumn.AllowEdit = false;
+            this.colLaneAddresses.OptionsColumn.AllowFocus = false;
+            this.colLaneAddresses.OptionsColumn.FixedWidth = true;
+            this.colLaneAddresses.OptionsColumn.ReadOnly = true;
+            this.colLaneAddresses.Visible = true;
+            this.colLaneAddresses.VisibleIndex = 5;
+            this.colLaneAddresses.Width = 94;
             // 
             // DeviceCollectionView
             // 
@@ -346,11 +380,12 @@
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup;
         private DevExpress.XtraLayout.LayoutControlItem itemLabel;
         private DevExpress.XtraLayout.LayoutControlItem itemGrid;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn colDeviceName;
+        private DevExpress.XtraGrid.Columns.GridColumn colPort;
+        private DevExpress.XtraGrid.Columns.GridColumn colDeviceType;
+        private DevExpress.XtraGrid.Columns.GridColumn colDeviceVersion;
+        private DevExpress.XtraGrid.Columns.GridColumn colDeviceGroup;
+        private DevExpress.XtraGrid.Columns.GridColumn colLaneAddresses;
+        private DevExpress.XtraGrid.Columns.GridColumn colCollectionState;
     }
 }
