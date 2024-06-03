@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace TrafficSignal.Server.Enums
 {
@@ -18,8 +19,14 @@ namespace TrafficSignal.Server.Enums
                 throw new ArgumentException("Input string cannot be null or empty.");
             }
 
+            // Remove all spaces first
+            hexString = hexString.Replace(" ", "");
+
+            // Add a space every two characters
+            hexString = Regex.Replace(hexString, @"(.{2})", "$1 ").Trim();
+
             // Split the string by spaces
-            var hexValues = hexString.Split(' ');
+            var hexValues = hexString.Split(' ', (char)StringSplitOptions.RemoveEmptyEntries);
 
             // Convert each hex value to a byte
             try
@@ -31,5 +38,6 @@ namespace TrafficSignal.Server.Enums
                 throw new ArgumentException("Input string contains invalid hexadecimal characters.");
             }
         }
+
     }
 }

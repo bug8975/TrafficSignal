@@ -20,9 +20,9 @@ namespace TrafficSignal.Server.Enums
 
         public static readonly Dictionary<ScreenCommandEnum, string> ScreenSmallCommandHexValues = new Dictionary<ScreenCommandEnum, string>
         {
-            { ScreenCommandEnum.NormalPassageGreen, "a5 00 68 32 01 7b 01 26 00 00 00 12 00 00 05 00 00 03 03 ff ff 00 c7 b0 20 bb ba 0d 0a b7 bd 20 c2 fd 0d 0a bb fd 20 cd a8 0d 0a cb aa 0e 20 d0 d0 00 82 10 ae" },
-            { ScreenCommandEnum.WaterAheadCarriageReturnSlowPassageYellow, "a5 68 32 01 7b 01 26 00 00 00 12 00 00 05 00 00 03 03 ff ff 00 c7 b0 20 bb ba 0d 0a b7 bd 20 c2 fd 0d 0a bb fd 20 cd a8 0d 0a cb aa 0e 20 d0 d0 00 7e 10 ae" },
-            { ScreenCommandEnum.WaterAheadCarriageReturnNoPassageRed, "a5 00 68 32 01 7b 01 26 00 00 00 12 00 00 05 00 00 03 03 ff 00 00 c7 b0 20 bd fb 0d 0a b7 bd 20 d6 b9 0d 0a bb fd 20 cd a8 0d 0a cb aa 0e 20 d0 d0 00 96 0f ae" },
+            { ScreenCommandEnum.NormalPassageGreen, "a5  68 32 01 7b 01 14 00 00 00 12 00 00 05 00 00 03 05 00 ff 00 d5 fd b3a3 cd a8 d0 d0 00 86 08 ae" },
+            { ScreenCommandEnum.WaterAheadCarriageReturnSlowPassageYellow, "a5 68 32 01 7b 01 22 00 00 00 12 00 00 05 00 00 03 04 ff ff 00 c7 b0  bb ba 0d 0a b7 bd  c2 fd 0d 0a bb fd  cd a8 0d 0a cb aa 0e  d0 d0 00 ff 0f ae" },
+            { ScreenCommandEnum.WaterAheadCarriageReturnNoPassageRed, "a5 68 32 01 7b 01 22 00 00 00 12 00 00 05 00 00 03 04 ff 00 00 c7 b0  bd fb 0d 0a b7 bd  d6 b9 0d 0a bb fd  cd a8 0d 0a cb aa 0e  d0 d0 00 13 0f ae" },
             { ScreenCommandEnum.SaveCommand, "A5 68 32 01 7B 01 04 00 00 00 07 00 00 00 22 01 ae" }
         };
 

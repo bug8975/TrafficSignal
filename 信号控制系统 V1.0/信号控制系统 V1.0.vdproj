@@ -687,6 +687,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_52A18DA2698449BD90F209085DC224B1"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_53FE2CD429AD93E88E18B942ADF64F39"
         "OwnerKey" = "8:_BDC8DDA1977841F186DBFA00EFB78187"
         "MsmSig" = "8:_UNDEFINED"
@@ -749,6 +755,12 @@
         {
         "MsmKey" = "8:_5D1434B8DCDC8492C891605335A4D293"
         "OwnerKey" = "8:_BDC8DDA1977841F186DBFA00EFB78187"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5DC4AD5D397940D38D092D1F689391E1"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -2026,12 +2038,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_212BD0FF15EE85B4FCF57EF82746E9CD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_BDC8DDA1977841F186DBFA00EFB78187"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -2935,6 +2941,12 @@
         "OwnerKey" = "8:_E8B2EAD3A6F93A7B3A741DA66A37D715"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_212BD0FF15EE85B4FCF57EF82746E9CD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -2953,6 +2965,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -2969,6 +2997,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -4672,6 +4708,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_52A18DA2698449BD90F209085DC224B1"
+            {
+            "SourcePath" = "8:..\\TrafficSignal\\Config\\log4net.config"
+            "TargetName" = "8:log4net.config"
+            "Tag" = "8:"
+            "Folder" = "8:_ABD18B82E58348159D7C97A6D575C8FE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_53FE2CD429AD93E88E18B942ADF64F39"
             {
             "AssemblyRegister" = "3:1"
@@ -4918,6 +4974,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5DC4AD5D397940D38D092D1F689391E1"
+            {
+            "SourcePath" = "8:..\\TrafficSignal\\Config\\log4net.unix.config"
+            "TargetName" = "8:log4net.unix.config"
+            "Tag" = "8:"
+            "Folder" = "8:_ABD18B82E58348159D7C97A6D575C8FE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5DF0B507F089E1177048E73957C65051"
@@ -8304,6 +8380,17 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_ABD18B82E58348159D7C97A6D575C8FE"
+                    {
+                    "Name" = "8:Config"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_ABE5B693898C4214832E9672CA7E32F6"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
             "{1525181F-901A-416C-8A58-119130FE478E}:_B1363DC90E9D40EDBB32A7325064B423"
@@ -8345,7 +8432,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:信号控制系统 V1.0"
         "ProductCode" = "8:{A254A7A4-7231-4676-A3EC-C5643D421EA4}"
-        "PackageCode" = "8:{AA830A5B-4939-44FE-B0F2-2DC3EB1879CD}"
+        "PackageCode" = "8:{4EF53CDF-4BED-40FE-99B4-C1EEF17796E9}"
         "UpgradeCode" = "8:{71C1C162-D212-4883-885F-A5F9359742EE}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"

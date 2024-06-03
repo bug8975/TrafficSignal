@@ -302,6 +302,7 @@ namespace TrafficSignal.Server
             {
                 // 参数应该已经被解析并存储在requestInfo.Parameters中
                 var key = requestInfo.Key.Split(',');
+                log.Debug($"Receive: {session.SocketSession.RemoteEndPoint} {key}");
 
                 // 检查参数数量是否正确
                 if (key.Length != 2)
@@ -358,6 +359,8 @@ namespace TrafficSignal.Server
                             cts.Cancel();
                         }
                     }
+
+                    log.Debug($"{device.DeviceName} {device.DeviceType} {device.DeviceGroup} {device.DeviceVersion} {message}");
 
                     ProcessAndSendMessages(device, message);
                 }

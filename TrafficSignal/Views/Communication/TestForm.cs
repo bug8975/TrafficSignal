@@ -85,6 +85,8 @@ namespace TrafficSignal.Views.Communication
                     return;
                 }
 
+                log.Debug($"{device.DeviceName} {device.DeviceType} {device.DeviceGroup} {device.DeviceVersion} {selectedValue}");
+
                 var result = Manager.SendMessageToClient(device, selectedValue);
                 log.Info(result);
                 XtraMessageBox.Show(result);
