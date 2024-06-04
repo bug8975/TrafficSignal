@@ -378,7 +378,7 @@ namespace TrafficSignal.Server
 
                     log.Debug($"{device.DeviceName} {device.DeviceType} {device.DeviceGroup} {device.DeviceVersion} {message}");
 
-                    ProcessAndSendMessages(device, message);
+                    ProcessAndSendMessagesAsync(device, message);
                 }
 
                 // 通知客户端所有消息已发送
@@ -402,7 +402,7 @@ namespace TrafficSignal.Server
                 case "显示器":
                     if (device.DeviceVersion.Equals("大屏（横屏）"))
                     {
-                        if(device.TestState.Equals("是") && num == 2)
+                        if (device.TestState.Equals("是") && num == 2)
                         {
                             message = "a5 68 32 ff 7b 01 1a 00 00 00 12 00 00 f5 00 00 03 07 ff 00 00 d0 c5 ba c5 b5 c6 b5 f7 0d 0a ca d4 d6 d0 00 d5 0d ae,A5 68 32 01 7B 01 04 00 00 00 07 00 00 00 22 01 ae";
                             break;
@@ -422,47 +422,41 @@ namespace TrafficSignal.Server
             return message;
         }
 
-        public void ProcessAndSendMessages(Device device, string message)
+        public async Task ProcessAndSendMessagesAsync(Device device, string message)
         {
-
             if (device.DeviceType.Equals("红绿灯"))
             {
-                string printMsg = EnumHelper.ConvertToLightCommands(message);
+                string printMsg = EnumHelper.ConvertToLightCommands(device, message);
                 log.Debug(printMsg);
             }
 
-            if (!message.Contains(",") && !message.Contains(";"))
+            if (device.DeviceType.Equals("显示器"))
             {
-                // 第一种情况：message中不包含逗号和分号,声光报警器
-                SendMessageToClient(device, message);
+                string printMsg = EnumHelper.ConvertToScreenCommands(device, message);
+                log.Debug(printMsg);
             }
-            else if (message.Contains(",") && !message.Contains(";"))
+
+            var messageParts = message.Split(new[] { '&', ';', ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (var part in messageParts)
             {
-                // 第二种情况：message中包含逗号且不包含分号
-                if (message.Contains('&'))
-                {
-                    foreach (var plcCommand in message.Split('&'))
-                    {
-                        foreach (var msg in plcCommand.Split(','))
-                        {
-                            SendMessageToClient(device, msg);
-                        }
-                    }
-                }
-                else
-                {
-                    foreach (var msg in message.Split(','))
-                    {
-                        SendMessageToClient(device, msg);
-                    }
-                }
+                await ProcessMessagePartAsync(device, part);
             }
-            else if (message.Contains(";"))
+        }
+
+        private async Task ProcessMessagePartAsync(Device device, string part)
+        {
+            int delayTime = device.DeviceType.Equals("声光报警器") ? 3000 : 1000;
+
+            await Task.Delay(delayTime);
+
+            if (part.Contains('&') || part.Contains(';') || part.Contains(','))
             {
-                // 启动黄灯闪烁模式
-                var cts = new CancellationTokenSource();
-                _cancellationTokenSources[device.Id] = cts;
-                StartFlashingYellowLight(device, message, cts.Token);
+                await ProcessAndSendMessagesAsync(device, part);
+            }
+            else
+            {
+                SendMessageToClient(device, part);
             }
         }
 

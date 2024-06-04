@@ -33,9 +33,9 @@ namespace TrafficSignal.Server.Enums
 
         public static readonly Dictionary<SignalCommandEnum, string> SignalCommandHexTemplates = new Dictionary<SignalCommandEnum, string>
         {
-            { SignalCommandEnum.Green, "01 05 00 00 00 00 CD CA,01 05 00 01 00 00 9C 0A,01 05 00 02 00 00 6C 0A" },
-            { SignalCommandEnum.Yellow, "01 05 00 00 FF 00 8C 3A,01 05 00 01 FF 00 DD FA,01 05 00 02 00 00 6C 0A" },
-            { SignalCommandEnum.Red, "01 05 00 00 FF 00 8C 3A,01 05 00 01 00 00 9C 0A,01 05 00 02 FF 00 2D FA" },
+            { SignalCommandEnum.Green, "01 0F 00 00 00 03 01 08 8E 91" },
+            { SignalCommandEnum.Yellow, "01 0F 00 00 00 03 01 03 CF 56" },
+            { SignalCommandEnum.Red, "01 0F 00 00 00 03 01 05 4F 54" },
             { SignalCommandEnum.Off, "01 05 00 00 FF 00 8C 3A,01 05 00 01 00 00 9C 0A,01 05 00 02 00 00 6C 0A" },
             { SignalCommandEnum.FlashingYellow, "01 05 00 00 FF 00 8C 3A,01 05 00 01 FF 00 DD FA,01 05 00 02 00 00 6C 0A;01 05 00 00 FF 00 8C 3A,01 05 00 01 00 00 9C 0A,01 05 00 02 00 00 6C 0A" },
         };
@@ -329,7 +329,7 @@ namespace TrafficSignal.Server.Enums
             }
         }
 
-        public static string ConvertToLightCommands(string input)
+        public static string ConvertToLightCommands(Device device, string input)
         {
             var laneMap = new Dictionary<string, (string Line, string TcpClient, string Lane)>
         {
@@ -345,81 +345,68 @@ namespace TrafficSignal.Server.Enums
             { "07", ("上行", "TcpClient-2", "5车道") }
         };
 
+            var lightStates = new Dictionary<string, string>
+        {
+            { "07", "绿灯" },
+            { "04", "黄灯" },
+            { "02", "红灯" }
+        };
+
             var groups = input.Split('&');
             StringBuilder result = new StringBuilder();
 
             foreach (var group in groups)
             {
-                var items = group.Split(';');
-                foreach (var item in items)
+                var parts = group.Split(' ');
+                string laneKey = parts[0];
+                string lightStateKey = parts[7];
+
+                if (laneMap.ContainsKey(laneKey) && lightStates.ContainsKey(lightStateKey))
                 {
-                    var commands = item.Split(',');
-                    string com1State = "", com2State = "", com3State = "";
-                    string laneKey = commands[0].Split(' ')[0];  // Assuming the lane address is the same for all commands in a group
+                    var (line, tcpClient, lane) = laneMap[laneKey];
+                    string lightState = lightStates[lightStateKey];
 
-                    foreach (var command in commands)
-                    {
-                        var parts = command.Split(' ');
-
-                        string state = parts[4] == "FF" ? "常开" : "常闭";
-
-                        switch (parts[3])
-                        {
-                            case "00":
-                                com1State = $"COM1{state}";
-                                break;
-                            case "01":
-                                com2State = $"COM2{state}";
-                                break;
-                            case "02":
-                                com3State = $"COM3{state}";
-                                break;
-                        }
-                    }
-
-                    if (laneMap.ContainsKey(laneKey))
-                    {
-                        var (line, tcpClient, lane) = laneMap[laneKey];
-                        string lightState = GetLightState(com1State, com2State, com3State);
-
-                        result.Append($"{line}-{lane}-{laneKey}-{lightState}：{com1State}，{com2State}，{com3State}；");
-                    }
+                    result.Append($"{line}-{device.Port}-{lane}-{laneKey}-{lightState}；");
                 }
-                // Remove the last semicolon and add an ampersand
-                if (result.Length > 0)
-                    result.Length--;
-                result.Append("＆");
             }
-            // Remove the last ampersand
+
+            // Remove the last semicolon
             if (result.Length > 0)
                 result.Length--;
 
-            return result.ToString();
+            return device.DeviceName + " " + result.ToString();
         }
 
-        static string GetLightState(string com1State, string com2State, string com3State)
+        public static string ConvertToScreenCommands(Device device, string input)
         {
-            if (com1State == "COM1常闭" && com2State == "COM2常闭" && com3State == "COM3常闭")
+            var commands = input.Split(',');
+            StringBuilder result = new StringBuilder();
+
+            foreach (var command in commands)
             {
-                return "绿灯";
+                foreach (var item in ScreenBigCommandHexValues)
+                {
+                    if (command.StartsWith(item.Value.Split(',')[0], StringComparison.OrdinalIgnoreCase))
+                    {
+                        result.Append($"{GetEnumDescription(item.Key)},");
+                        break;
+                    }
+                }
+                foreach (var item in ScreenSmallCommandHexValues)
+                {
+                    if (command.StartsWith(item.Value.Split(',')[0], StringComparison.OrdinalIgnoreCase))
+                    {
+                        result.Append($"{GetEnumDescription(item.Key)},");
+                        break;
+                    }
+                }
             }
-            else if (com1State == "COM1常开" && com2State == "COM2常开" && com3State == "COM3常闭")
-            {
-                return "黄灯";
-            }
-            else if (com1State == "COM1常开" && com2State == "COM2常闭" && com3State == "COM3常开")
-            {
-                return "红灯";
-            }
-            else if (com1State == "COM1常开" && com2State == "COM2常闭" && com3State == "COM3常闭")
-            {
-                return "熄灭";
-            }
-            else if (com1State != "" && com2State != "" && com3State != "")
-            {
-                return "未知状态";
-            }
-            return "未知状态";
+
+            // Remove the last comma
+            if (result.Length > 0)
+                result.Length--;
+
+            return device.DeviceName + " " + result.ToString();
         }
     }
 }
