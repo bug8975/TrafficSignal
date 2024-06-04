@@ -87,9 +87,8 @@ namespace TrafficSignal.Views.Communication
 
                 log.Debug($"{device.DeviceName} {device.DeviceType} {device.DeviceGroup} {device.DeviceVersion} {selectedValue}");
 
-                var result = Manager.SendMessageToClient(device, selectedValue);
-                log.Info(result);
-                XtraMessageBox.Show(result);
+                Manager.ProcessAndSendMessages(device, selectedValue);
+                XtraMessageBox.Show("发送成功");
             }
             catch (Exception ex)
             {

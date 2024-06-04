@@ -25,6 +25,9 @@ namespace TrafficSignal.Models
         [Display(Name = "车道地址列表")]
         public string LaneAddresses { get; set; }
 
+        [Display(Name = "调试状态")]
+        public string TestState { get; set; }
+
         [Display(Name = "设备状态")]
         public string CollectionState { get; set; }
     }

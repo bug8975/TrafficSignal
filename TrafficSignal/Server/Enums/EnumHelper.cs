@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using log4net;
 using TrafficSignal.Models;
 
@@ -326,6 +327,99 @@ namespace TrafficSignal.Server.Enums
                 log.Error($"Error getting SignalCommandHexValue by int value {intValue} for device with addresses {device.LaneAddresses}", ex);
                 return string.Empty;
             }
+        }
+
+        public static string ConvertToLightCommands(string input)
+        {
+            var laneMap = new Dictionary<string, (string Line, string TcpClient, string Lane)>
+        {
+            { "01", ("下行", "TcpClient-3", "1车道") },
+            { "08", ("下行", "TcpClient-3", "2车道") },
+            { "09", ("下行", "TcpClient-3", "3车道") },
+            { "0A", ("下行", "TcpClient-3", "4车道") },
+            { "02", ("下行", "TcpClient-4", "5车道") },
+            { "03", ("上行", "TcpClient-1", "1车道") },
+            { "04", ("上行", "TcpClient-1", "2车道") },
+            { "05", ("上行", "TcpClient-1", "3车道") },
+            { "06", ("上行", "TcpClient-1", "4车道") },
+            { "07", ("上行", "TcpClient-2", "5车道") }
+        };
+
+            var groups = input.Split('&');
+            StringBuilder result = new StringBuilder();
+
+            foreach (var group in groups)
+            {
+                var items = group.Split(';');
+                foreach (var item in items)
+                {
+                    var commands = item.Split(',');
+                    string com1State = "", com2State = "", com3State = "";
+                    string laneKey = commands[0].Split(' ')[0];  // Assuming the lane address is the same for all commands in a group
+
+                    foreach (var command in commands)
+                    {
+                        var parts = command.Split(' ');
+
+                        string state = parts[4] == "FF" ? "常开" : "常闭";
+
+                        switch (parts[3])
+                        {
+                            case "00":
+                                com1State = $"COM1{state}";
+                                break;
+                            case "01":
+                                com2State = $"COM2{state}";
+                                break;
+                            case "02":
+                                com3State = $"COM3{state}";
+                                break;
+                        }
+                    }
+
+                    if (laneMap.ContainsKey(laneKey))
+                    {
+                        var (line, tcpClient, lane) = laneMap[laneKey];
+                        string lightState = GetLightState(com1State, com2State, com3State);
+
+                        result.Append($"{line}-{lane}-{laneKey}-{lightState}：{com1State}，{com2State}，{com3State}；");
+                    }
+                }
+                // Remove the last semicolon and add an ampersand
+                if (result.Length > 0)
+                    result.Length--;
+                result.Append("＆");
+            }
+            // Remove the last ampersand
+            if (result.Length > 0)
+                result.Length--;
+
+            return result.ToString();
+        }
+
+        static string GetLightState(string com1State, string com2State, string com3State)
+        {
+            if (com1State == "COM1常闭" && com2State == "COM2常闭" && com3State == "COM3常闭")
+            {
+                return "绿灯";
+            }
+            else if (com1State == "COM1常开" && com2State == "COM2常开" && com3State == "COM3常闭")
+            {
+                return "黄灯";
+            }
+            else if (com1State == "COM1常开" && com2State == "COM2常闭" && com3State == "COM3常开")
+            {
+                return "红灯";
+            }
+            else if (com1State == "COM1常开" && com2State == "COM2常闭" && com3State == "COM3常闭")
+            {
+                return "熄灭";
+            }
+            else if (com1State != "" && com2State != "" && com3State != "")
+            {
+                return "未知状态";
+            }
+            return "未知状态";
         }
     }
 }

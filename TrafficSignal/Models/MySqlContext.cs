@@ -73,6 +73,13 @@ namespace TrafficSignal.Models
                 entity.Property(e => e.Port)
                     .HasColumnName("port")
                     .HasColumnType("int(6)");
+
+                entity.Property(e => e.TestState)
+                    .IsRequired()
+                    .HasColumnName("test_state")
+                    .HasColumnType("varchar(255)")
+                    .HasDefaultValueSql("'否'");
+
             });
         }
     }

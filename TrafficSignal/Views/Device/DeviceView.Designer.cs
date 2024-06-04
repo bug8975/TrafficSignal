@@ -28,12 +28,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions2 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions3 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions4 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions5 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions6 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions13 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions14 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions15 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions16 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions17 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions18 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.DeviceNameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.deviceViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -43,6 +43,7 @@
             this.DeviceVersionTextEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.DeviceTypeTextEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.LaneAddressesTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.TestStateTextEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.ItemForDeviceName = new DevExpress.XtraLayout.LayoutControlItem();
@@ -52,6 +53,7 @@
             this.ItemForDeviceGroup = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForCollectionState = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForLaneAddresses = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForTestState = new DevExpress.XtraLayout.LayoutControlItem();
             this.windowsUIButtonPanelCloseButton = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
             this.windowsUIButtonPanelMain = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
             this.labelControl = new DevExpress.XtraEditors.LabelControl();
@@ -66,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DeviceVersionTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DeviceTypeTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LaneAddressesTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TestStateTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDeviceName)).BeginInit();
@@ -75,6 +78,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDeviceGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCollectionState)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForLaneAddresses)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForTestState)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvvmContext)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,6 +92,7 @@
             this.dataLayoutControl1.Controls.Add(this.DeviceVersionTextEdit);
             this.dataLayoutControl1.Controls.Add(this.DeviceTypeTextEdit);
             this.dataLayoutControl1.Controls.Add(this.LaneAddressesTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.TestStateTextEdit);
             this.dataLayoutControl1.DataSource = this.deviceViewBindingSource;
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataLayoutControl1.Location = new System.Drawing.Point(60, 38);
@@ -128,8 +133,8 @@
             // 
             // CollectionStateTextEdit
             // 
-            this.CollectionStateTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.deviceViewBindingSource, "CollectionState", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.CollectionStateTextEdit.Location = new System.Drawing.Point(76, 174);
+            this.CollectionStateTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.deviceViewBindingSource, "TestState", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.CollectionStateTextEdit.Location = new System.Drawing.Point(76, 201);
             this.CollectionStateTextEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.CollectionStateTextEdit.Name = "CollectionStateTextEdit";
             this.CollectionStateTextEdit.Size = new System.Drawing.Size(1217, 23);
@@ -191,6 +196,20 @@
             this.LaneAddressesTextEdit.StyleController = this.dataLayoutControl1;
             this.LaneAddressesTextEdit.TabIndex = 10;
             // 
+            // TestStateTextEdit
+            // 
+            this.TestStateTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.deviceViewBindingSource, "TestState", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.TestStateTextEdit.Location = new System.Drawing.Point(76, 174);
+            this.TestStateTextEdit.Name = "TestStateTextEdit";
+            this.TestStateTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.TestStateTextEdit.Properties.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.TestStateTextEdit.Size = new System.Drawing.Size(1217, 23);
+            this.TestStateTextEdit.StyleController = this.dataLayoutControl1;
+            this.TestStateTextEdit.TabIndex = 11;
+            // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -212,7 +231,8 @@
             this.ItemForDeviceVersion,
             this.ItemForDeviceGroup,
             this.ItemForCollectionState,
-            this.ItemForLaneAddresses});
+            this.ItemForLaneAddresses,
+            this.ItemForTestState});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "autoGeneratedGroup0";
             this.layoutControlGroup2.Size = new System.Drawing.Size(1285, 759);
@@ -260,9 +280,12 @@
             // ItemForCollectionState
             // 
             this.ItemForCollectionState.Control = this.CollectionStateTextEdit;
-            this.ItemForCollectionState.Location = new System.Drawing.Point(0, 162);
+            this.ItemForCollectionState.CustomizationFormText = "在线状态";
+            this.ItemForCollectionState.DataBindings.Add(new System.Windows.Forms.Binding("CustomizationFormText", this.deviceViewBindingSource, "CollectionState", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ItemForCollectionState.Location = new System.Drawing.Point(0, 189);
             this.ItemForCollectionState.Name = "ItemForCollectionState";
-            this.ItemForCollectionState.Size = new System.Drawing.Size(1285, 597);
+            this.ItemForCollectionState.Size = new System.Drawing.Size(1285, 570);
+            this.ItemForCollectionState.Text = "在线状态";
             this.ItemForCollectionState.TextSize = new System.Drawing.Size(60, 15);
             this.ItemForCollectionState.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
             // 
@@ -275,12 +298,21 @@
             this.ItemForLaneAddresses.Text = "车道地址";
             this.ItemForLaneAddresses.TextSize = new System.Drawing.Size(60, 15);
             // 
+            // ItemForTestState
+            // 
+            this.ItemForTestState.Control = this.TestStateTextEdit;
+            this.ItemForTestState.Location = new System.Drawing.Point(0, 162);
+            this.ItemForTestState.Name = "ItemForTestState";
+            this.ItemForTestState.Size = new System.Drawing.Size(1285, 27);
+            this.ItemForTestState.Text = "调试状态";
+            this.ItemForTestState.TextSize = new System.Drawing.Size(60, 15);
+            // 
             // windowsUIButtonPanelCloseButton
             // 
             this.windowsUIButtonPanelCloseButton.ButtonInterval = 0;
-            windowsUIButtonImageOptions1.ImageUri.Uri = "Backward;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions13.ImageUri.Uri = "Backward;Size32x32;GrayScaled";
             this.windowsUIButtonPanelCloseButton.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("", true, windowsUIButtonImageOptions13, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
             this.windowsUIButtonPanelCloseButton.ContentAlignment = System.Drawing.ContentAlignment.TopCenter;
             this.windowsUIButtonPanelCloseButton.Dock = System.Windows.Forms.DockStyle.Left;
             this.windowsUIButtonPanelCloseButton.ForeColor = System.Drawing.Color.Gray;
@@ -312,17 +344,17 @@
             this.windowsUIButtonPanelMain.AppearanceButton.Pressed.Options.UseFont = true;
             this.windowsUIButtonPanelMain.AppearanceButton.Pressed.Options.UseForeColor = true;
             this.windowsUIButtonPanelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
-            windowsUIButtonImageOptions2.ImageUri.Uri = "Save;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions3.ImageUri.Uri = "SaveAndClose;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions4.ImageUri.Uri = "SaveAndNew;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions5.ImageUri.Uri = "Reset;Size32x32;GrayScaled";
-            windowsUIButtonImageOptions6.ImageUri.Uri = "Edit/Delete;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions14.ImageUri.Uri = "Save;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions15.ImageUri.Uri = "SaveAndClose;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions16.ImageUri.Uri = "SaveAndNew;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions17.ImageUri.Uri = "Reset;Size32x32;GrayScaled";
+            windowsUIButtonImageOptions18.ImageUri.Uri = "Edit/Delete;Size32x32;GrayScaled";
             this.windowsUIButtonPanelMain.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save And Close", true, windowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save And New", true, windowsUIButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Reset Changes", true, windowsUIButtonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Delete", true, windowsUIButtonImageOptions6, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save", true, windowsUIButtonImageOptions14, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save And Close", true, windowsUIButtonImageOptions15, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Save And New", true, windowsUIButtonImageOptions16, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Reset Changes", true, windowsUIButtonImageOptions17, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("Delete", true, windowsUIButtonImageOptions18, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
             this.windowsUIButtonPanelMain.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.windowsUIButtonPanelMain.EnableImageTransparency = true;
             this.windowsUIButtonPanelMain.ForeColor = System.Drawing.Color.White;
@@ -384,6 +416,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DeviceVersionTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DeviceTypeTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LaneAddressesTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TestStateTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDeviceName)).EndInit();
@@ -393,6 +426,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDeviceGroup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCollectionState)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForLaneAddresses)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForTestState)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvvmContext)).EndInit();
             this.ResumeLayout(false);
 
@@ -422,5 +456,7 @@
         private DevExpress.XtraLayout.LayoutControlItem ItemForCollectionState;
         private DevExpress.XtraEditors.TextEdit LaneAddressesTextEdit;
         private DevExpress.XtraLayout.LayoutControlItem ItemForLaneAddresses;
+        private DevExpress.XtraEditors.ComboBoxEdit TestStateTextEdit;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForTestState;
     }
 }

@@ -283,7 +283,14 @@ namespace TrafficSignal.Server
                 {
                     session.Send(byteArray, 0, byteArray.Length);
                 }
-                Task.Delay(TimeSpan.FromMilliseconds(50)).Wait();
+                if (device.DeviceType.Equals("声光报警器"))
+                {
+                    Task.Delay(TimeSpan.FromSeconds(5)).Wait();
+                }
+                else
+                {
+                    Task.Delay(TimeSpan.FromMilliseconds(100)).Wait();
+                }
 
                 return "消息发送成功";
             }
@@ -302,7 +309,7 @@ namespace TrafficSignal.Server
             {
                 // 参数应该已经被解析并存储在requestInfo.Parameters中
                 var key = requestInfo.Key.Split(',');
-                log.Debug($"Receive: {session.SocketSession.RemoteEndPoint} {key}");
+                log.Debug($"Receive: {session.SocketSession.RemoteEndPoint} {key[0]}{key[1]}");
 
                 // 检查参数数量是否正确
                 if (key.Length != 2)
@@ -339,6 +346,15 @@ namespace TrafficSignal.Server
                     session.Send($"Error: No devices found with the group '{deviceGroup}'.");
                     return;
                 }
+
+                if (num == 0)
+                    log.Debug("绿灯");
+                else if (num == 1)
+                    log.Debug("黄灯");
+                else if (num == 2)
+                    log.Debug("红灯");
+                else
+                    log.Debug("未知指令");
 
                 // 为每一个匹配的设备发送信息
                 foreach (var device in devices)
@@ -385,7 +401,14 @@ namespace TrafficSignal.Server
             {
                 case "显示器":
                     if (device.DeviceVersion.Equals("大屏（横屏）"))
+                    {
+                        if(device.TestState.Equals("是") && num == 2)
+                        {
+                            message = "a5 68 32 ff 7b 01 1a 00 00 00 12 00 00 f5 00 00 03 07 ff 00 00 d0 c5 ba c5 b5 c6 b5 f7 0d 0a ca d4 d6 d0 00 d5 0d ae,A5 68 32 01 7B 01 04 00 00 00 07 00 00 00 22 01 ae";
+                            break;
+                        }
                         message = EnumHelper.GetScreenBigCommandHexValueByIntValue(num);
+                    }
                     else if (device.DeviceVersion.Equals("小屏（竖屏）"))
                         message = EnumHelper.GetScreenSmallCommandHexValueByIntValue(num);
                     break;
@@ -399,8 +422,15 @@ namespace TrafficSignal.Server
             return message;
         }
 
-        private void ProcessAndSendMessages(Device device, string message)
+        public void ProcessAndSendMessages(Device device, string message)
         {
+
+            if (device.DeviceType.Equals("红绿灯"))
+            {
+                string printMsg = EnumHelper.ConvertToLightCommands(message);
+                log.Debug(printMsg);
+            }
+
             if (!message.Contains(",") && !message.Contains(";"))
             {
                 // 第一种情况：message中不包含逗号和分号,声光报警器
@@ -473,7 +503,7 @@ namespace TrafficSignal.Server
                             break;
                         }
 
-                        Task.Delay(TimeSpan.FromSeconds(10)).Wait();
+                        Task.Delay(TimeSpan.FromSeconds(1)).Wait();
 
                         if (token.IsCancellationRequested)
                         {
@@ -490,7 +520,7 @@ namespace TrafficSignal.Server
                             break;
                         }
 
-                        Task.Delay(TimeSpan.FromSeconds(10)).Wait();
+                        Task.Delay(TimeSpan.FromSeconds(1)).Wait();
 
                         if (token.IsCancellationRequested)
                         {
