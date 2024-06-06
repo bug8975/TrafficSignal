@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using TrafficSignal.Models;
 using TrafficSignal.MySqlContextDataModel;
+using TrafficSignal.Server.Dao;
 using TrafficSignal.Server.Enums;
 
 namespace TrafficSignal.Server
@@ -18,11 +19,11 @@ namespace TrafficSignal.Server
     public class SupersocketManager
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(SupersocketManager));
-        private List<CustomAppServer> _servers;
-        private List<ServerConfig> _serverConfigs;
-        private Dictionary<string, bool> _serverStates;
-        private HashSet<int> _usedPorts;
-        private List<Device> _devices;
+        private ConcurrentBag<CustomAppServer> _servers;
+        private ConcurrentBag<ServerConfig> _serverConfigs;
+        private ConcurrentDictionary<string, bool> _serverStates;
+        private ConcurrentHashSet<int> _usedPorts;
+        private ConcurrentBag<Device> _devices;
         private IMySqlContextUnitOfWork _dbContext;
         private DeviceAppServer _fixedPortServer;
 
@@ -30,11 +31,11 @@ namespace TrafficSignal.Server
 
         public SupersocketManager()
         {
-            _servers = new List<CustomAppServer>();
-            _serverConfigs = new List<ServerConfig>();
-            _serverStates = new Dictionary<string, bool>();
-            _usedPorts = new HashSet<int>();
-            _devices = new List<Device>();
+            _servers = new ConcurrentBag<CustomAppServer>();
+            _serverConfigs = new ConcurrentBag<ServerConfig>();
+            _serverStates = new ConcurrentDictionary<string, bool>();
+            _usedPorts = new ConcurrentHashSet<int>();
+            _devices = new ConcurrentBag<Device>();
             _dbContext = UnitOfWorkSource.GetUnitOfWorkFactory().CreateUnitOfWork();
         }
 
@@ -47,7 +48,7 @@ namespace TrafficSignal.Server
                 throw new ArgumentException("The devices list cannot be null or empty.");
             }
 
-            _devices = devices;
+            _devices = new ConcurrentBag<Device>(devices);
 
             foreach (var device in devices)
             {
@@ -151,7 +152,7 @@ namespace TrafficSignal.Server
             var tasks = new List<Task>();
             foreach (var server in _servers)
             {
-                if (!_serverStates[server.Config.Name])
+                if (_serverStates[server.Config.Name] == false)
                 {
                     tasks.Add(StartServerAsync(server));
                 }
@@ -191,7 +192,7 @@ namespace TrafficSignal.Server
             var tasks = new List<Task>();
             foreach (var server in _servers)
             {
-                if (_serverStates[server.Config.Name])
+                if (_serverStates[server.Config.Name] == true)
                 {
                     tasks.Add(StopServerAsync(server));
                 }
