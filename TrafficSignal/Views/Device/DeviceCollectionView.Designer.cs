@@ -69,12 +69,12 @@
             // gridControl
             // 
             this.gridControl.DataSource = this.deviceCollectionViewBindingSource;
-            this.gridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(5);
-            this.gridControl.Location = new System.Drawing.Point(53, 42);
+            this.gridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(15, 19, 15, 19);
+            this.gridControl.Location = new System.Drawing.Point(92, 53);
             this.gridControl.MainView = this.gridView;
-            this.gridControl.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.gridControl.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(1259, 775);
+            this.gridControl.Size = new System.Drawing.Size(2204, 1580);
             this.gridControl.TabIndex = 2;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -94,7 +94,7 @@
             this.colLaneAddresses,
             this.colTestState,
             this.colCollectionState});
-            this.gridView.DetailHeight = 404;
+            this.gridView.DetailHeight = 809;
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
             this.gridView.OptionsBehavior.Editable = false;
@@ -114,15 +114,14 @@
             this.colDeviceName.AppearanceHeader.Options.UseTextOptions = true;
             this.colDeviceName.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colDeviceName.FieldName = "DeviceName";
-            this.colDeviceName.MinWidth = 25;
+            this.colDeviceName.MinWidth = 43;
             this.colDeviceName.Name = "colDeviceName";
             this.colDeviceName.OptionsColumn.AllowEdit = false;
             this.colDeviceName.OptionsColumn.AllowFocus = false;
-            this.colDeviceName.OptionsColumn.FixedWidth = true;
             this.colDeviceName.OptionsColumn.ReadOnly = true;
             this.colDeviceName.Visible = true;
             this.colDeviceName.VisibleIndex = 0;
-            this.colDeviceName.Width = 94;
+            this.colDeviceName.Width = 164;
             // 
             // colPort
             // 
@@ -131,15 +130,14 @@
             this.colPort.AppearanceHeader.Options.UseTextOptions = true;
             this.colPort.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colPort.FieldName = "Port";
-            this.colPort.MinWidth = 25;
+            this.colPort.MinWidth = 43;
             this.colPort.Name = "colPort";
             this.colPort.OptionsColumn.AllowEdit = false;
             this.colPort.OptionsColumn.AllowFocus = false;
-            this.colPort.OptionsColumn.FixedWidth = true;
             this.colPort.OptionsColumn.ReadOnly = true;
             this.colPort.Visible = true;
             this.colPort.VisibleIndex = 1;
-            this.colPort.Width = 94;
+            this.colPort.Width = 164;
             // 
             // colDeviceType
             // 
@@ -148,15 +146,14 @@
             this.colDeviceType.AppearanceHeader.Options.UseTextOptions = true;
             this.colDeviceType.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colDeviceType.FieldName = "DeviceType";
-            this.colDeviceType.MinWidth = 25;
+            this.colDeviceType.MinWidth = 43;
             this.colDeviceType.Name = "colDeviceType";
             this.colDeviceType.OptionsColumn.AllowEdit = false;
             this.colDeviceType.OptionsColumn.AllowFocus = false;
-            this.colDeviceType.OptionsColumn.FixedWidth = true;
             this.colDeviceType.OptionsColumn.ReadOnly = true;
             this.colDeviceType.Visible = true;
             this.colDeviceType.VisibleIndex = 2;
-            this.colDeviceType.Width = 94;
+            this.colDeviceType.Width = 164;
             // 
             // colDeviceVersion
             // 
@@ -165,15 +162,14 @@
             this.colDeviceVersion.AppearanceHeader.Options.UseTextOptions = true;
             this.colDeviceVersion.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colDeviceVersion.FieldName = "DeviceVersion";
-            this.colDeviceVersion.MinWidth = 25;
+            this.colDeviceVersion.MinWidth = 43;
             this.colDeviceVersion.Name = "colDeviceVersion";
             this.colDeviceVersion.OptionsColumn.AllowEdit = false;
             this.colDeviceVersion.OptionsColumn.AllowFocus = false;
-            this.colDeviceVersion.OptionsColumn.FixedWidth = true;
             this.colDeviceVersion.OptionsColumn.ReadOnly = true;
             this.colDeviceVersion.Visible = true;
             this.colDeviceVersion.VisibleIndex = 3;
-            this.colDeviceVersion.Width = 94;
+            this.colDeviceVersion.Width = 164;
             // 
             // colDeviceGroup
             // 
@@ -182,15 +178,14 @@
             this.colDeviceGroup.AppearanceHeader.Options.UseTextOptions = true;
             this.colDeviceGroup.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colDeviceGroup.FieldName = "DeviceGroup";
-            this.colDeviceGroup.MinWidth = 25;
+            this.colDeviceGroup.MinWidth = 43;
             this.colDeviceGroup.Name = "colDeviceGroup";
             this.colDeviceGroup.OptionsColumn.AllowEdit = false;
             this.colDeviceGroup.OptionsColumn.AllowFocus = false;
-            this.colDeviceGroup.OptionsColumn.FixedWidth = true;
             this.colDeviceGroup.OptionsColumn.ReadOnly = true;
             this.colDeviceGroup.Visible = true;
             this.colDeviceGroup.VisibleIndex = 4;
-            this.colDeviceGroup.Width = 94;
+            this.colDeviceGroup.Width = 164;
             // 
             // colLaneAddresses
             // 
@@ -200,15 +195,14 @@
             this.colLaneAddresses.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colLaneAddresses.Caption = "车道地址列表";
             this.colLaneAddresses.FieldName = "LaneAddresses";
-            this.colLaneAddresses.MinWidth = 25;
+            this.colLaneAddresses.MinWidth = 43;
             this.colLaneAddresses.Name = "colLaneAddresses";
             this.colLaneAddresses.OptionsColumn.AllowEdit = false;
             this.colLaneAddresses.OptionsColumn.AllowFocus = false;
-            this.colLaneAddresses.OptionsColumn.FixedWidth = true;
             this.colLaneAddresses.OptionsColumn.ReadOnly = true;
             this.colLaneAddresses.Visible = true;
             this.colLaneAddresses.VisibleIndex = 5;
-            this.colLaneAddresses.Width = 94;
+            this.colLaneAddresses.Width = 164;
             // 
             // colTestState
             // 
@@ -218,15 +212,14 @@
             this.colTestState.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colTestState.Caption = "调试状态";
             this.colTestState.FieldName = "TestState";
-            this.colTestState.MinWidth = 25;
+            this.colTestState.MinWidth = 43;
             this.colTestState.Name = "colTestState";
             this.colTestState.OptionsColumn.AllowEdit = false;
             this.colTestState.OptionsColumn.AllowFocus = false;
-            this.colTestState.OptionsColumn.FixedWidth = true;
             this.colTestState.OptionsColumn.ReadOnly = true;
             this.colTestState.Visible = true;
             this.colTestState.VisibleIndex = 6;
-            this.colTestState.Width = 94;
+            this.colTestState.Width = 164;
             // 
             // colCollectionState
             // 
@@ -235,15 +228,14 @@
             this.colCollectionState.AppearanceHeader.Options.UseTextOptions = true;
             this.colCollectionState.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colCollectionState.FieldName = "CollectionState";
-            this.colCollectionState.MinWidth = 25;
+            this.colCollectionState.MinWidth = 43;
             this.colCollectionState.Name = "colCollectionState";
             this.colCollectionState.OptionsColumn.AllowEdit = false;
             this.colCollectionState.OptionsColumn.AllowFocus = false;
-            this.colCollectionState.OptionsColumn.FixedWidth = true;
             this.colCollectionState.OptionsColumn.ReadOnly = true;
             this.colCollectionState.Visible = true;
             this.colCollectionState.VisibleIndex = 7;
-            this.colCollectionState.Width = 94;
+            this.colCollectionState.Width = 164;
             // 
             // mvvmContext
             // 
@@ -262,11 +254,11 @@
             this.labelControl.Appearance.Options.UseTextOptions = true;
             this.labelControl.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.labelControl.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
-            this.labelControl.Location = new System.Drawing.Point(53, 0);
-            this.labelControl.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.labelControl.Location = new System.Drawing.Point(92, 0);
+            this.labelControl.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.labelControl.Name = "labelControl";
-            this.labelControl.Padding = new System.Windows.Forms.Padding(0, 3, 17, 7);
-            this.labelControl.Size = new System.Drawing.Size(1259, 42);
+            this.labelControl.Padding = new System.Windows.Forms.Padding(0, 7, 29, 14);
+            this.labelControl.Size = new System.Drawing.Size(2204, 53);
             this.labelControl.StyleController = this.layoutControl;
             this.labelControl.TabIndex = 4;
             this.labelControl.Text = "设备";
@@ -278,10 +270,10 @@
             this.layoutControl.Controls.Add(this.gridControl);
             this.layoutControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl.Location = new System.Drawing.Point(0, 0);
-            this.layoutControl.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.layoutControl.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.layoutControl.Name = "layoutControl";
             this.layoutControl.Root = this.layoutControlGroup;
-            this.layoutControl.Size = new System.Drawing.Size(1365, 817);
+            this.layoutControl.Size = new System.Drawing.Size(2388, 1633);
             this.layoutControl.TabIndex = 0;
             // 
             // layoutControlGroup
@@ -292,8 +284,8 @@
             this.itemLabel,
             this.itemGrid});
             this.layoutControlGroup.Name = "layoutControlGroup";
-            this.layoutControlGroup.Padding = new DevExpress.XtraLayout.Utils.Padding(53, 53, 0, 0);
-            this.layoutControlGroup.Size = new System.Drawing.Size(1365, 817);
+            this.layoutControlGroup.Padding = new DevExpress.XtraLayout.Utils.Padding(92, 92, 0, 0);
+            this.layoutControlGroup.Size = new System.Drawing.Size(2388, 1633);
             this.layoutControlGroup.TextVisible = false;
             // 
             // itemLabel
@@ -302,17 +294,17 @@
             this.itemLabel.Location = new System.Drawing.Point(0, 0);
             this.itemLabel.Name = "itemLabel";
             this.itemLabel.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.itemLabel.Size = new System.Drawing.Size(1259, 42);
+            this.itemLabel.Size = new System.Drawing.Size(2204, 53);
             this.itemLabel.TextSize = new System.Drawing.Size(0, 0);
             this.itemLabel.TextVisible = false;
             // 
             // itemGrid
             // 
             this.itemGrid.Control = this.gridControl;
-            this.itemGrid.Location = new System.Drawing.Point(0, 42);
+            this.itemGrid.Location = new System.Drawing.Point(0, 53);
             this.itemGrid.Name = "itemGrid";
             this.itemGrid.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.itemGrid.Size = new System.Drawing.Size(1259, 775);
+            this.itemGrid.Size = new System.Drawing.Size(2204, 1580);
             this.itemGrid.TextSize = new System.Drawing.Size(0, 0);
             this.itemGrid.TextVisible = false;
             // 
@@ -354,12 +346,12 @@
             this.windowsUIButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.windowsUIButtonPanel.EnableImageTransparency = true;
             this.windowsUIButtonPanel.ForeColor = System.Drawing.Color.White;
-            this.windowsUIButtonPanel.Location = new System.Drawing.Point(0, 817);
-            this.windowsUIButtonPanel.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.windowsUIButtonPanel.MaximumSize = new System.Drawing.Size(0, 69);
-            this.windowsUIButtonPanel.MinimumSize = new System.Drawing.Size(80, 69);
+            this.windowsUIButtonPanel.Location = new System.Drawing.Point(0, 1633);
+            this.windowsUIButtonPanel.Margin = new System.Windows.Forms.Padding(8, 12, 8, 12);
+            this.windowsUIButtonPanel.MaximumSize = new System.Drawing.Size(0, 138);
+            this.windowsUIButtonPanel.MinimumSize = new System.Drawing.Size(140, 138);
             this.windowsUIButtonPanel.Name = "windowsUIButtonPanel";
-            this.windowsUIButtonPanel.Size = new System.Drawing.Size(1365, 69);
+            this.windowsUIButtonPanel.Size = new System.Drawing.Size(2388, 138);
             this.windowsUIButtonPanel.TabIndex = 1;
             this.windowsUIButtonPanel.Text = "windowsUIButtonPanel";
             this.windowsUIButtonPanel.UseButtonBackgroundImages = false;
@@ -368,13 +360,13 @@
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
             this.Appearance.Options.UseBackColor = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.layoutControl);
             this.Controls.Add(this.windowsUIButtonPanel);
-            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.Name = "DeviceCollectionView";
-            this.Size = new System.Drawing.Size(1365, 886);
+            this.Size = new System.Drawing.Size(2388, 1771);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deviceCollectionViewBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();

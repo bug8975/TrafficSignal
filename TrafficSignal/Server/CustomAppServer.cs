@@ -2,6 +2,7 @@
 using SuperSocket.SocketBase;
 using System;
 using TrafficSignal.Models;
+using TrafficSignal.MySqlContextDataModel;
 
 namespace TrafficSignal.Server
 {
@@ -9,9 +10,9 @@ namespace TrafficSignal.Server
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(CustomAppServer));
         private Device _device;
-        private MySqlContext _dbContext;
+        private IMySqlContextUnitOfWork _dbContext;
 
-        public CustomAppServer(Device device, MySqlContext dbContext)
+        public CustomAppServer(Device device, IMySqlContextUnitOfWork dbContext)
         {
             _device = device;
             _dbContext = dbContext;
@@ -31,18 +32,25 @@ namespace TrafficSignal.Server
 
         private void UpdateDeviceState(int deviceId, string state)
         {
-            var device = _dbContext.Device.Find(deviceId);
-            if (device != null)
+            try
             {
-                device.CollectionState = state;
-                _dbContext.SaveChanges();
-                Console.WriteLine($"Device {device.DeviceName} state updated to {state}.");
-                log.Info($"Device {device.DeviceName} state updated to {state}.");
+                var device = _dbContext.Device.Find(deviceId);
+                if (device != null)
+                {
+                    device.CollectionState = state;
+                    _dbContext.SaveChanges();
+                    Console.WriteLine($"Device {device.DeviceName} state updated to {state}.");
+                    log.Info($"Device {device.DeviceName} state updated to {state}.");
+                }
+                else
+                {
+                    Console.WriteLine($"Device with ID {deviceId} not found.");
+                    log.Warn($"Device with ID {deviceId} not found.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine($"Device with ID {deviceId} not found.");
-                log.Warn($"Device with ID {deviceId} not found.");
+                log.Error(ex.Message);
             }
         }
 

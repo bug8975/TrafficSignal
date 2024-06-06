@@ -24,7 +24,6 @@ namespace TrafficSignal.ViewModels
         private static readonly ILog log = LogManager.GetLogger(typeof(DeviceCollectionViewModel));
         private SupersocketManager Manager { get; set; }
         private IMessageBoxService BoxService { get; set; }
-        private MySqlContext _dbContext;
         /// <summary>
         /// Creates a new instance of DeviceCollectionViewModel as a POCO view model.
         /// </summary>
@@ -48,9 +47,8 @@ namespace TrafficSignal.ViewModels
         {
             try
             {
-                _dbContext = new MySqlContext();
-                Manager = new SupersocketManager(_dbContext);
                 BoxService = this.GetService<IMessageBoxService>();
+                Manager = new SupersocketManager();
                 Manager.CreateFixedPortServer();
                 base.OnLoaded();
             }
@@ -59,24 +57,6 @@ namespace TrafficSignal.ViewModels
                 log.Error(ex.Message);
                 Console.WriteLine(ex.Message);
             }
-        }
-
-        public override void Refresh()
-        {
-            try
-            {
-                Entities.ForEach(device =>
-                {
-                    string state = Manager.GetServerStatus(device);
-                    UpdateDeviceState(device.Id, state);
-                });
-            }
-            catch (Exception ex)
-            {
-                log.Error(ex.Message);
-                this.GetService<IMessageBoxService>().ShowMessage(ex.Message);
-            }
-            base.Refresh();
         }
 
         public async Task OpenNetWorkAsync()
@@ -126,13 +106,47 @@ namespace TrafficSignal.ViewModels
             testForm.ShowDialog();
         }
 
+        public override void Refresh()
+        {
+            try
+            {
+                // 使用 ToList() 确保我们遍历的是一个固定的集合快照，避免在循环过程中集合发生变化
+                var entitiesSnapshot = Entities.ToList();
+
+                // 更新状态的逻辑
+                entitiesSnapshot.ForEach(device =>
+                {
+                    string state = Manager.GetServerStatus(device);
+                    UpdateDeviceState(device.Id, state);
+                });
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+                this.GetService<IMessageBoxService>().ShowMessage(ex.Message);
+            }
+            base.Refresh();
+        }
+
         private void UpdateDeviceState(int deviceId, string state)
         {
-            var device = _dbContext.Device.Find(deviceId);
+            // 使用单一的 UnitOfWork 实例来避免多个实例之间的数据不一致问题
+            var unitOfWork = UnitOfWorkSource.GetUnitOfWorkFactory().CreateUnitOfWork();
+            var device = unitOfWork.Device.Find(deviceId);
+
             if (device != null)
             {
+                // 更新数据库中的实体
                 device.CollectionState = state;
-                _dbContext.SaveChanges();
+                unitOfWork.SaveChanges();
+
+                // 更新内存中的实体（Entities 集合）
+                var entity = Entities.FirstOrDefault(e => e.Id == deviceId);
+                if (entity != null)
+                {
+                    entity.CollectionState = state;
+                }
+
                 Console.WriteLine($"Device {device.DeviceName} state updated to {state}.");
             }
             else

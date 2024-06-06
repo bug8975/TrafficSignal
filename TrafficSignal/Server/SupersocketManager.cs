@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using TrafficSignal.Models;
+using TrafficSignal.MySqlContextDataModel;
 using TrafficSignal.Server.Enums;
 
 namespace TrafficSignal.Server
@@ -22,19 +23,19 @@ namespace TrafficSignal.Server
         private Dictionary<string, bool> _serverStates;
         private HashSet<int> _usedPorts;
         private List<Device> _devices;
-        private MySqlContext _dbContext;
+        private IMySqlContextUnitOfWork _dbContext;
         private DeviceAppServer _fixedPortServer;
 
         private static readonly ConcurrentDictionary<int, CancellationTokenSource> _cancellationTokenSources = new ConcurrentDictionary<int, CancellationTokenSource>();
 
-        public SupersocketManager(MySqlContext dbContext)
+        public SupersocketManager()
         {
             _servers = new List<CustomAppServer>();
             _serverConfigs = new List<ServerConfig>();
             _serverStates = new Dictionary<string, bool>();
             _usedPorts = new HashSet<int>();
             _devices = new List<Device>();
-            _dbContext = dbContext;
+            _dbContext = UnitOfWorkSource.GetUnitOfWorkFactory().CreateUnitOfWork();
         }
 
         // 批量实例化服务器
@@ -251,57 +252,6 @@ namespace TrafficSignal.Server
             }
         }
 
-        // 向客户端发送消息
-        public string SendMessageToClient(Device device, string message)
-        {
-            var server = _servers.FirstOrDefault(s => s.Config.Port == device.Port);
-            if (server == null)
-            {
-                return "服务未创建";
-            }
-
-            if (!_serverStates[server.Config.Name])
-            {
-                return "服务未开启";
-            }
-
-            if (server.SessionCount == 0)
-            {
-                return "没有客户端连接";
-            }
-
-            try
-            {
-                var sessions = server.GetAllSessions().ToList();
-                if (!sessions.Any())
-                {
-                    return "没有找到客户端会话";
-                }
-
-                byte[] byteArray = StringToByteArray.Convert(message);
-                foreach (var session in sessions)
-                {
-                    session.Send(byteArray, 0, byteArray.Length);
-                }
-                if (device.DeviceType.Equals("声光报警器"))
-                {
-                    Task.Delay(TimeSpan.FromSeconds(5)).Wait();
-                }
-                else
-                {
-                    Task.Delay(TimeSpan.FromMilliseconds(100)).Wait();
-                }
-
-                return "消息发送成功";
-            }
-            catch (Exception ex)
-            {
-                log.Error($"Error sending message to client: {ex.Message}");
-                Console.WriteLine($"Error sending message to client: {ex.Message}");
-                return $"消息发送失败: {ex.Message}";
-            }
-        }
-
         // 处理来自固定端口服务器的请求
         public void HandleFixedPortRequest(AppSession session, StringRequestInfo requestInfo)
         {
@@ -309,33 +259,37 @@ namespace TrafficSignal.Server
             {
                 // 参数应该已经被解析并存储在requestInfo.Parameters中
                 var key = requestInfo.Key.Split(',');
-                log.Debug($"Receive: {session.SocketSession.RemoteEndPoint} {key[0]}{key[1]}");
+                log.Debug($"Receive: {session.SocketSession.RemoteEndPoint} {string.Join(",", key)}");
 
                 // 检查参数数量是否正确
                 if (key.Length != 2)
                 {
-                    session.Send("Error: Request format should be 'deviceGroup,num'.");
+                    session.Send($"Error: Request format should be 'deviceGroup,num'. Message: {requestInfo.Key}");
+                    log.Warn($"Invalid request format: {requestInfo.Key}");
                     return;
                 }
 
                 var deviceGroup = key[0];
                 if (string.IsNullOrEmpty(deviceGroup))
                 {
-                    session.Send("Error: Device group cannot be empty.");
+                    session.Send($"Error: Device group cannot be empty. Message: {requestInfo.Key}");
+                    log.Warn($"Device group is empty: {requestInfo.Key}");
                     return;
                 }
 
                 // 检查num是否是一个整数
                 if (!int.TryParse(key[1], out int num))
                 {
-                    session.Send("Error: 'num' should be an integer.");
+                    session.Send($"Error: 'num' should be an integer. Message: {requestInfo.Key}");
+                    log.Warn($"'num' is not an integer: {requestInfo.Key}");
                     return;
                 }
 
                 // 检查num是否在0到5之间
-                if (num < 0 || num > 5)
+                if (num < 0 || num > 2)
                 {
-                    session.Send("Error: 'num' should be between 0 and 5.");
+                    session.Send($"Error: 'num' should be between 0 and 2. Message: {requestInfo.Key}");
+                    log.Warn($"'num' out of range: {requestInfo.Key}");
                     return;
                 }
 
@@ -343,10 +297,12 @@ namespace TrafficSignal.Server
                 var devices = _devices.Where(d => d.DeviceGroup == deviceGroup).ToList();
                 if (devices.Count == 0)
                 {
-                    session.Send($"Error: No devices found with the group '{deviceGroup}'.");
+                    session.Send($"Error: No devices found with the group '{deviceGroup}'. Message: {requestInfo.Key}");
+                    log.Warn($"No devices found for group: {deviceGroup}");
                     return;
                 }
 
+                // Log the received command
                 if (num == 0)
                     log.Debug("绿灯");
                 else if (num == 1)
@@ -364,6 +320,7 @@ namespace TrafficSignal.Server
                     if (string.IsNullOrEmpty(message))
                     {
                         // 未知设备类型或没有找到对应的消息，跳过处理
+                        log.Warn($"No command message for device type: {device.DeviceType}, id: {device.Id}");
                         continue;
                     }
 
@@ -387,6 +344,7 @@ namespace TrafficSignal.Server
             catch (Exception ex)
             {
                 log.Error($"Error handling fixed port request: {ex.Message}");
+                log.Error($"Received message: {requestInfo.Key}");
                 Console.WriteLine($"Error handling fixed port request: {ex.Message}");
                 session.Send($"Error: {ex.Message}");
             }
@@ -446,9 +404,7 @@ namespace TrafficSignal.Server
 
         private async Task ProcessMessagePartAsync(Device device, string part)
         {
-            int delayTime = device.DeviceType.Equals("声光报警器") ? 3000 : 1000;
-
-            await Task.Delay(delayTime);
+            int delayTime = device.DeviceType.Equals("声光报警器") ? 7000 : 1000;
 
             if (part.Contains('&') || part.Contains(';') || part.Contains(','))
             {
@@ -458,77 +414,50 @@ namespace TrafficSignal.Server
             {
                 SendMessageToClient(device, part);
             }
+
+            await Task.Delay(delayTime);
         }
 
-        private void StartFlashingYellowLight(Device device, string message, CancellationToken token)
+        public string SendMessageToClient(Device device, string message)
         {
-            Task.Run(() =>
+            var server = _servers.FirstOrDefault(s => s.Config.Port == device.Port);
+            if (server == null)
             {
-                while (!token.IsCancellationRequested)
+                return "服务未创建";
+            }
+
+            if (!_serverStates[server.Config.Name])
+            {
+                return "服务未开启";
+            }
+
+            if (server.SessionCount == 0)
+            {
+                return "没有客户端连接";
+            }
+
+            try
+            {
+                var sessions = server.GetAllSessions().ToList();
+                if (!sessions.Any())
                 {
-                    try
-                    {
-                        if (token.IsCancellationRequested)
-                        {
-                            break;
-                        }
-
-                        var plcCommands = message.Split('&');
-                        var commandGroups = plcCommands
-                            .Select(plc => plc.Split(';').Select(g => g.Split(',')).ToArray())
-                            .ToArray();
-
-                        if (commandGroups.Any(g => g.Length != 2))
-                        {
-                            log.Error("Each PLC group should contain exactly two sets of commands separated by ';'");
-                            throw new Exception("Each PLC group should contain exactly two sets of commands separated by ';'");
-                        }
-
-                        var firstGroupCommands = commandGroups.SelectMany(g => g[0]).ToList();
-                        var secondGroupCommands = commandGroups.SelectMany(g => g[1]).ToList();
-
-                        foreach (var msg in firstGroupCommands)
-                        {
-                            SendMessageToClient(device, msg);
-                        }
-
-                        if (token.IsCancellationRequested)
-                        {
-                            break;
-                        }
-
-                        Task.Delay(TimeSpan.FromSeconds(1)).Wait();
-
-                        if (token.IsCancellationRequested)
-                        {
-                            break;
-                        }
-
-                        foreach (var msg in secondGroupCommands)
-                        {
-                            SendMessageToClient(device, msg);
-                        }
-
-                        if (token.IsCancellationRequested)
-                        {
-                            break;
-                        }
-
-                        Task.Delay(TimeSpan.FromSeconds(1)).Wait();
-
-                        if (token.IsCancellationRequested)
-                        {
-                            break;
-                        }
-
-                    }
-                    catch (Exception ex)
-                    {
-                        log.Error("Error processing command string", ex);
-                        throw ex;
-                    }
+                    return "没有找到客户端会话";
                 }
-            }, token);
+
+                byte[] byteArray = StringToByteArray.Convert(message);
+                foreach (var session in sessions)
+                {
+                    session.Send(byteArray, 0, byteArray.Length);
+                }
+
+                return "消息发送成功";
+            }
+            catch (Exception ex)
+            {
+                log.Error($"Error sending message to client: {ex.Message}");
+                Console.WriteLine($"Error sending message to client: {ex.Message}");
+                return $"消息发送失败: {ex.Message}";
+            }
         }
     }
 }
